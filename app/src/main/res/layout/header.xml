@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:orientation="horizontal"
+    android:gravity="center_horizontal"
+    android:paddingTop="10dp"
+    android:background="#2ECC71">
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:src="@drawable/minimize"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity=""
+        android:fontFamily="@font/poppins_bold"
+        android:text="Dhuwitku"
+        android:textColor="#FFFFFF"
+        android:textSize="24dp"
+        android:textStyle="bold"></TextView>
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_gravity="right"
+
+        android:src="@drawable/new_moreoff" />
+
+
+</LinearLayout>

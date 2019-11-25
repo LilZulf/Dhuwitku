@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bgauth"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    tools:context=".Login">
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"
+        android:src="@drawable/logo"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="36dp"
+        android:textColor="#808080"
+        android:text="Dhuwitku"
+        android:fontFamily="@font/poppins_bold"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:layout_gravity="center"
+        android:text="Atur uangmu disini"/>
+
+    <EditText
+        android:id="@+id/InputUsername"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:hint="username"
+        android:textColorHint="#808080"
+        android:fontFamily="@font/poppins_regular"
+        android:layout_marginTop="40dp"
+        />
+
+    <EditText
+        android:id="@+id/InputPassword"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:inputType="textPassword"
+        android:layout_gravity="center"
+        android:textColorHint="#808080"
+        android:hint="password"
+        android:fontFamily="@font/poppins_regular"
+        android:layout_marginTop="10dp"
+        />
+    <Button
+        android:id="@+id/ButtonLogin"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:background="#2ECC71"
+        android:text="Login"
+        android:textColor="#ffffff"
+        android:fontFamily="@font/poppins_medium"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="40dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:layout_gravity="center"
+            android:text="Baru disini?"/>
+        <TextView
+            android:id="@+id/SignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:textColor="#03A9F4"
+            android:layout_gravity="center"
+            android:text="SignUp disini"/>
+    </LinearLayout>
+
+
+
+</LinearLayout>
