@@ -27,7 +27,7 @@
         android:layout_height="30dp"
         android:layout_gravity="right"
 
-        android:src="@drawable/new_moreoff" />
+        android:src="@drawable/more_off" />
 
 
 </LinearLayout>
