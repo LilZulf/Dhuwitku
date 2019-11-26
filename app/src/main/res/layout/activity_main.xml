@@ -7,14 +7,16 @@
     tools:context=".MainActivity"
     android:orientation="vertical"
     >
-
+    <include layout="@layout/header"/>
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs_main"
+            android:background="@color/Thame"
             android:layout_width="match_parent"
+            app:tabIndicatorColor="#ffffff"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"/>
     </androidx.viewpager.widget.ViewPager>

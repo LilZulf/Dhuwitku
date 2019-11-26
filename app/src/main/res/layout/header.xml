@@ -1,33 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
-    android:orientation="horizontal"
+    android:layout_height="60dp"
+    android:background="#2ECC71"
     android:gravity="center_horizontal"
-    android:paddingTop="10dp"
-    android:background="#2ECC71">
+    android:paddingHorizontal="10dp"
+    android:orientation="horizontal">
 
+    <!--    <ImageView-->
+    <!--        android:layout_width="50dp"-->
+    <!--        android:layout_height="30dp"-->
+    <!--        android:src="@drawable/minimize"/>-->
     <ImageView
-        android:layout_width="50dp"
+        android:layout_width="0dp"
         android:layout_height="30dp"
-        android:src="@drawable/minimize"/>
+
+        android:layout_gravity="center"
+        android:layout_weight="1" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/title"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity=""
+        android:layout_gravity="center"
+        android:layout_weight="1"
         android:fontFamily="@font/poppins_bold"
         android:text="Dhuwitku"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="24dp"
-        android:textStyle="bold"></TextView>
+        android:textSize="20dp"
+        android:textStyle="bold"
 
-    <ImageView
-        android:layout_width="50dp"
+        ></TextView>
+
+    <RelativeLayout
+        android:layout_width="0dp"
         android:layout_height="30dp"
-        android:layout_gravity="right"
+        android:layout_gravity="center"
+        android:layout_weight="1">
 
-        android:src="@drawable/more_off" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/more_off" />
+    </RelativeLayout>
 
 
 </LinearLayout>
