@@ -4,5 +4,7 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
-    <color name="primaryTheme">#200000</color>>
+    <color name="primaryTheme">#200000</color>
+    <color name="bg_green">#2ecc71</color>
+    <color name="black">#000000</color>
 </resources>

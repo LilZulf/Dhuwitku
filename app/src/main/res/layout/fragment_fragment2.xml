@@ -1,17 +1,258 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragment.Fragment2">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
+        android:id="@+id/rl_total_laporan"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:textSize="40sp"
-        android:text="Page 2" />
+        android:layout_height="180dp"
+        android:background="@drawable/frame_border"
+        android:layout_margin="20dp"
+        android:padding="15dp">
 
+        <TextView
+            android:id="@+id/tv_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="#000"/>
 
-</FrameLayout>
+        <RelativeLayout
+            android:id="@+id/rl_pemasukan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_total"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/tv_pemasukan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pemasukan"
+                android:textColor="@color/bg_green"
+                android:textStyle="bold"
+                android:textSize="20sp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/tv_pemasukan"
+                android:gravity="end"
+                android:layout_alignParentRight="true">
+
+                <TextView
+                    android:id="@+id/tv_rp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rp."
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/bg_green"
+                    android:layout_toRightOf="@id/tv_pemasukan"/>
+
+                <TextView
+                    android:id="@+id/tv_value_pemasukan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50.000,00"
+                    android:textColor="@color/bg_green"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_toRightOf="@id/tv_rp"
+                    android:textAlignment="textEnd"
+                    android:gravity="end"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_pengeluaran"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rl_pemasukan"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:id="@+id/tv_pengeluaran"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pengeluaran"
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/tv_pengeluaran"
+                android:gravity="end"
+                android:layout_alignParentRight="true">
+
+                <TextView
+                    android:id="@+id/tv_rp2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rp."
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:layout_toRightOf="@id/tv_pengeluaran"/>
+
+                <TextView
+                    android:id="@+id/tv_value_pengeluaran"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="35.000,00"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:layout_toRightOf="@id/tv_rp2"
+                    android:textAlignment="textEnd"
+                    android:gravity="end"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/line"
+            android:layout_below="@id/rl_pengeluaran"
+            android:layout_marginTop="10dp"/>
+
+        <RelativeLayout
+            android:id="@+id/rl_selisih"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rl_pengeluaran"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/tv_selisih"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Selisih"
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/tv_selisih"
+                android:gravity="end"
+                android:layout_alignParentRight="true">
+
+                <TextView
+                    android:id="@+id/tv_rp3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rp."
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:layout_toRightOf="@id/tv_pengeluaran"/>
+
+                <TextView
+                    android:id="@+id/tv_value_selisih"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="15.000,00"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:layout_toRightOf="@id/tv_rp2"
+                    android:textAlignment="textEnd"
+                    android:gravity="end"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_laporan_bulan"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/frame_border"
+        android:layout_below="@id/rl_total_laporan"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Laporan per bulan"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="20dp"/>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/next"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_laporan_minggu"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/frame_border"
+        android:layout_below="@id/rl_laporan_bulan"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Laporan per minggu"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="20dp"/>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/next"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_riwayat_transaksi"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/frame_border"
+        android:layout_below="@id/rl_laporan_minggu"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Riwayat Transaksi"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="20dp"/>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/next"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
