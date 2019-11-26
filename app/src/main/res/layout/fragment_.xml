@@ -6,15 +6,15 @@
     tools:context=".Fragment.Fragment1">
 
     <RelativeLayout
-        android:layout_width="300dp"
-        android:layout_height="400dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_margin="10dp"
         android:padding="10dp"
         android:background="@drawable/border_radius">
 
         <LinearLayout
             android:id="@+id/DateNow"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="60dp"
             android:orientation="vertical">
 
@@ -50,7 +50,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_below="@+id/DateNow"
             android:orientation="horizontal">
