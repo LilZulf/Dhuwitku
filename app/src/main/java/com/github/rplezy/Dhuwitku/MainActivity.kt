@@ -9,7 +9,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_login)
         viewpager_main.adapter = MyPagerAdapter(supportFragmentManager)
         tabs_main.setupWithViewPager(viewpager_main)
     }
