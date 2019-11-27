@@ -12,8 +12,8 @@ class Register : AppCompatActivity() {
         setContentView(R.layout.activity_register)
 
         ButtonSign.setOnClickListener {
-            val daf = Intent(applicationContext,Login::class.java)
-            startActivity(daf)
+            val da = Intent(applicationContext,Login::class.java)
+            startActivity(da)
         }
         Login.setOnClickListener {
             val daf = Intent(applicationContext,Login::class.java)
