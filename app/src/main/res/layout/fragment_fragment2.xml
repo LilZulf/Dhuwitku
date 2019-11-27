@@ -5,13 +5,26 @@
     android:layout_height="match_parent"
     tools:context=".Fragment.Fragment2">
 
+    <TextView
+        android:id="@+id/tv_tanggal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="01 Nov 2019 - 19 Nov 2019"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
+
     <RelativeLayout
         android:id="@+id/rl_total_laporan"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="160dp"
         android:background="@drawable/frame_border"
         android:layout_margin="20dp"
-        android:padding="15dp">
+        android:padding="15dp"
+        android:layout_below="@id/tv_tanggal">
 
         <TextView
             android:id="@+id/tv_total"
@@ -19,7 +32,7 @@
             android:layout_height="wrap_content"
             android:text="Total"
             android:textStyle="bold"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:textColor="#000"/>
 
         <RelativeLayout
@@ -36,7 +49,7 @@
                 android:text="Pemasukan"
                 android:textColor="@color/Thame"
                 android:textStyle="bold"
-                android:textSize="20sp"/>
+                android:textSize="15sp"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -50,7 +63,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Rp."
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     android:textStyle="bold"
                     android:textColor="@color/Thame"
                     android:layout_toRightOf="@id/tv_pemasukan"/>
@@ -62,7 +75,7 @@
                     android:text="50.000,00"
                     android:textColor="@color/Thame"
                     android:textStyle="bold"
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     android:layout_toRightOf="@id/tv_rp"
                     android:textAlignment="textEnd"
                     android:gravity="end"/>
@@ -83,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:text="Pengeluaran"
                 android:textColor="@color/black"
-                android:textSize="20sp"/>
+                android:textSize="15sp"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -97,7 +110,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Rp."
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     android:textColor="@color/black"
                     android:layout_toRightOf="@id/tv_pengeluaran"/>
 
@@ -107,7 +120,7 @@
                     android:layout_height="wrap_content"
                     android:text="35.000,00"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     android:layout_toRightOf="@id/tv_rp2"
                     android:textAlignment="textEnd"
                     android:gravity="end"/>
@@ -135,7 +148,7 @@
                 android:layout_height="wrap_content"
                 android:text="Selisih"
                 android:textColor="@color/black"
-                android:textSize="20sp"/>
+                android:textSize="15sp"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -149,7 +162,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Rp."
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     android:textColor="@color/black"
                     android:layout_toRightOf="@id/tv_pengeluaran"/>
 
@@ -159,7 +172,7 @@
                     android:layout_height="wrap_content"
                     android:text="15.000,00"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     android:layout_toRightOf="@id/tv_rp2"
                     android:textAlignment="textEnd"
                     android:gravity="end"/>
@@ -172,7 +185,7 @@
     <RelativeLayout
         android:id="@+id/rl_laporan_bulan"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:background="@drawable/frame_border"
         android:layout_below="@id/rl_total_laporan"
         android:layout_marginLeft="20dp"
@@ -182,14 +195,15 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="Laporan per bulan"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:gravity="center_vertical"
             android:layout_marginLeft="20dp"/>
 
         <ImageView
-            android:layout_width="20dp"
+
+            android:layout_width="10dp"
             android:layout_height="match_parent"
             android:src="@drawable/next"
             android:layout_alignParentRight="true"
@@ -200,7 +214,7 @@
     <RelativeLayout
         android:id="@+id/rl_laporan_minggu"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:background="@drawable/frame_border"
         android:layout_below="@id/rl_laporan_bulan"
         android:layout_marginLeft="20dp"
@@ -211,14 +225,14 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="Laporan per minggu"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:gravity="center_vertical"
             android:layout_marginLeft="20dp"/>
 
         <ImageView
-            android:layout_width="20dp"
+            android:layout_width="10dp"
             android:layout_height="match_parent"
             android:src="@drawable/next"
             android:layout_alignParentRight="true"
@@ -229,7 +243,7 @@
     <RelativeLayout
         android:id="@+id/rl_riwayat_transaksi"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:background="@drawable/frame_border"
         android:layout_below="@id/rl_laporan_minggu"
         android:layout_marginLeft="20dp"
@@ -240,14 +254,14 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="Riwayat Transaksi"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:textColor="@color/black"
             android:textStyle="bold"
             android:gravity="center_vertical"
             android:layout_marginLeft="20dp"/>
 
         <ImageView
-            android:layout_width="20dp"
+            android:layout_width="10dp"
             android:layout_height="match_parent"
             android:src="@drawable/next"
             android:layout_alignParentRight="true"
