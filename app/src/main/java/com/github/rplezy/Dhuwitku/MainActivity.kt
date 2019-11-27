@@ -1,9 +1,11 @@
 package com.github.rplezy.Dhuwitku
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.github.rplezy.Dhuwitku.Adapter.MyPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_fragment2.*
 
 
 class MainActivity : AppCompatActivity() {

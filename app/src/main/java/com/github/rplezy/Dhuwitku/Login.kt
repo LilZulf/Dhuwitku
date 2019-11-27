@@ -13,10 +13,12 @@ class Login : AppCompatActivity() {
 
         ButtonLogin.setOnClickListener {
             val daf = Intent(applicationContext,MainActivity::class.java)
+            finish()
             startActivity(daf)
         }
         SignUp.setOnClickListener {
             val daf = Intent(applicationContext,Register::class.java)
+            finish()
             startActivity(daf)
         }
     }
