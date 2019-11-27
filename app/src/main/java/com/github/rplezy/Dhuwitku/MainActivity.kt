@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.github.rplezy.Dhuwitku.Adapter.MyPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_fragment2.*
+import kotlinx.android.synthetic.main.header.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -18,6 +19,10 @@ class MainActivity : AppCompatActivity() {
         viewpager_main!!.adapter = MyPagerAdapter(supportFragmentManager)
         tabs_main.setupWithViewPager(viewpager_main)
         setupTabIcons()
+        iv_scan.setOnClickListener{
+            val daf = Intent(applicationContext,QrScanner::class.java)
+            startActivity(daf)
+        }
     }
     private fun setupTabIcons() {
         tabs_main.getTabAt(0)?.setIcon(tabIcons[0])
