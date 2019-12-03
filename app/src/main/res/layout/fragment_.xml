@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragment.Fragment1">
 
     <RelativeLayout
@@ -64,6 +65,7 @@
                 android:src="@drawable/lunch" />
 
             <TextView
+                android:id="@+id/JudulTransaksi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -96,19 +98,74 @@
             android:layout_marginVertical="100dp"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Pengeluaran : Rp.20.000,00"
-                android:textSize="18dp" />
+                android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Pengeluaran"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textSize="18dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="5dp"
+                    android:text=":"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textSize="18dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rp."
+                    android:fontFamily="@font/poppins_bold"
+                    android:textSize="18dp"/>
+                <TextView
+                    android:id="@+id/UangKeluar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="20000"
+                    android:textSize="18dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Pemasukan : Rp.0"
-                android:textColor="#2ECC71"
-                android:textSize="18dp" />
+                android:orientation="horizontal">
 
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Pengeluaran"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textSize="18dp"
+                    android:textColor="@color/Theme"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="5dp"
+                    android:text=":"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textColor="@color/Theme"
+                    android:textSize="18dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rp."
+                    android:fontFamily="@font/poppins_bold"
+                    android:textColor="@color/Theme"
+                    android:textSize="18dp"/>
+                <TextView
+                    android:id="@+id/UangMasuk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="0"
+                    android:textColor="@color/Theme"
+                    android:textSize="18dp"/>
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -119,8 +176,8 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:layout_gravity="bottom|end"
-
-            android:backgroundTint="#2ECC71"
+            app:elevation="0dp"
+            android:backgroundTint="@color/Theme"
             android:src="@drawable/add" />
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab2"
@@ -128,21 +185,23 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_alignParentRight="true"
+            app:elevation="0dp"
             android:layout_above="@id/fab1"
             android:layout_marginBottom="10dp"
-            android:backgroundTint="#2ECC71"
+            android:backgroundTint="@color/Theme"
             android:visibility="gone"
-            android:src="@drawable/new_plusoff" />
+            android:src="@drawable/ic_add"/>
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_alignParentRight="true"
+            app:elevation="0dp"
             android:layout_above="@id/fab2"
             android:layout_marginBottom="10dp"
-            android:backgroundTint="#2ECC71"
-            android:src="@drawable/new_plusoff"
+            android:backgroundTint="@color/Theme"
+            android:src="@drawable/ic_add"
             android:visibility="gone"
             />
 
