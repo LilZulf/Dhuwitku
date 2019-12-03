@@ -10,6 +10,7 @@
         android:layout_height="match_parent"
         android:layout_margin="20dp"
         android:padding="10dp"
+        android:id="@+id/rv_main"
         android:background="@drawable/border_radius">
 
         <LinearLayout
@@ -112,20 +113,38 @@
         </LinearLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab"
+            android:id="@+id/fab1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:layout_gravity="bottom|end"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp"
+
             android:backgroundTint="#2ECC71"
             android:src="@drawable/add" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_alignParentRight="true"
+            android:layout_above="@id/fab1"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="#2ECC71"
+            android:visibility="gone"
+            android:src="@drawable/new_plusoff" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_alignParentRight="true"
+            android:layout_above="@id/fab2"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="#2ECC71"
+            android:src="@drawable/new_plusoff"
+            android:visibility="gone"
+            />
 
 
     </RelativeLayout>
