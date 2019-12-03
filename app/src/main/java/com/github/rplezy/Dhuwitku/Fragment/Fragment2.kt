@@ -9,8 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.github.rplezy.Dhuwitku.R
-import com.github.rplezy.Dhuwitku.Riwayat
-import kotlinx.android.synthetic.main.fragment_fragment2.*
+import com.github.rplezy.Dhuwitku.RiwayatActivity
 import kotlinx.android.synthetic.main.fragment_fragment2.view.*
 
 /**
@@ -27,7 +26,7 @@ class Fragment2 : Fragment() {
         val view: View = inflater.inflate(R.layout.fragment_fragment2, container, false)
 
         view.rl_riwayat_transaksi.setOnClickListener {
-            val daf = Intent(context, Riwayat::class.java)
+            val daf = Intent(context, RiwayatActivity::class.java)
             startActivity(daf)
         }
         return view

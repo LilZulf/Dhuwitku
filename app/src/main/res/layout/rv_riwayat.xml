@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="70dp">
+
+    <ImageView
+        android:id="@+id/iv_riwayat"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/lunch"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_riwayat_pemasukan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/iv_riwayat"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+        <TextView
+            android:id="@+id/tv_pemasukan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pemasukan"
+            android:textColor="@color/Thame"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+
+        <RelativeLayout
+            android:id="@+id/rl_riwayat_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:layout_alignParentRight="true">
+
+            <TextView
+                android:id="@+id/tv_rp_riwayat_pemasukan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rp."
+                android:textColor="@color/Thame"
+                android:textStyle="bold"
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/tv_pemasukan_riwayat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20.000,00"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/Thame"
+                android:layout_toRightOf="@id/tv_rp_riwayat_pemasukan"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_riwayat_pengeluaran"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_riwayat_pemasukan"
+        android:layout_toRightOf="@id/iv_riwayat"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pengeluaran"
+            android:textSize="20sp"
+            android:textColor="@color/black" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:layout_alignParentRight="true">
+
+            <TextView
+                android:id="@+id/tv_rp_riwayat_pengeluaran"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rp."
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/tv_pengeluaran_riwayat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="20.000,00"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_toRightOf="@id/tv_rp_riwayat_pengeluaran"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>
