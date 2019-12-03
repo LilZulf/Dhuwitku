@@ -47,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Pemasukan"
-                android:textColor="@color/Thame"
+                android:textColor="@color/Theme"
                 android:textStyle="bold"
                 android:textSize="15sp"/>
 
@@ -65,7 +65,7 @@
                     android:text="Rp."
                     android:textSize="15sp"
                     android:textStyle="bold"
-                    android:textColor="@color/Thame"
+                    android:textColor="@color/Theme"
                     android:layout_toRightOf="@id/tv_pemasukan"/>
 
                 <TextView
@@ -73,7 +73,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="50.000,00"
-                    android:textColor="@color/Thame"
+                    android:textColor="@color/Theme"
                     android:textStyle="bold"
                     android:textSize="15sp"
                     android:layout_toRightOf="@id/tv_rp"

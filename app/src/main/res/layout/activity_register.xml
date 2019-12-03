@@ -78,7 +78,7 @@
         android:id="@+id/ButtonSign"
         android:layout_width="180dp"
         android:layout_height="40dp"
-        android:background="#2ECC71"
+        android:background="@drawable/button"
         android:text="SignUp"
         android:textColor="#ffffff"
         android:fontFamily="@font/poppins_medium"

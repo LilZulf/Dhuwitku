@@ -17,6 +17,7 @@
         android:src="@drawable/logo"/>
 
     <TextView
+        android:id="@+id/judul"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -30,6 +31,7 @@
         android:layout_height="wrap_content"
         android:textSize="18dp"
         android:layout_gravity="center"
+        android:fontFamily="@font/poppins_medium"
         android:text="Atur uangmu disini"/>
 
 <!--    <EditText-->
@@ -53,6 +55,7 @@
             android:layout_height="40dp"
             android:inputType="text"
             android:hint="Email"
+            android:fontFamily="@font/poppins_regular"
             android:id="@+id/usrEmail"
             />
     </com.google.android.material.textfield.TextInputLayout>
@@ -77,6 +80,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:fontFamily="@font/poppins_regular"
             android:inputType="textPassword"
             android:hint="Password"
             android:id="@+id/Password"
@@ -86,7 +90,7 @@
         android:id="@+id/ButtonLogin"
         android:layout_width="180dp"
         android:layout_height="40dp"
-        android:background="#2ECC71"
+        android:background="@drawable/button"
         android:text="Login"
         android:textColor="#ffffff"
         android:fontFamily="@font/poppins_medium"
@@ -107,6 +111,7 @@
             android:layout_height="wrap_content"
             android:textSize="14dp"
             android:layout_gravity="center"
+            android:fontFamily="@font/poppins_regular"
             android:text="Baru disini?"/>
         <TextView
             android:id="@+id/SignUp"
@@ -115,6 +120,7 @@
             android:textSize="14dp"
             android:textColor="#03A9F4"
             android:layout_gravity="center"
+            android:fontFamily="@font/poppins_regular"
             android:text="SignUp disini"/>
     </LinearLayout>
 

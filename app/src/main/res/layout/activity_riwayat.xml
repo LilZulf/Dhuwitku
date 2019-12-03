@@ -36,7 +36,7 @@
                    <LinearLayout
                        android:layout_width="70dp"
                        android:layout_height="match_parent"
-                       android:background="@color/Thame"
+                       android:background="@color/Theme"
                        >
 
                    </LinearLayout>
@@ -52,7 +52,7 @@
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
                            android:text="Pemasukan"
-                           android:textColor="@color/Thame"
+                           android:textColor="@color/Theme"
                            android:textStyle="bold"
                            android:textSize="20sp"/>
                        <TextView
@@ -76,7 +76,7 @@
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
                            android:text="Rp. 200000.00"
-                           android:textColor="@color/Thame"
+                           android:textColor="@color/Theme"
                            android:textStyle="bold"
                            android:textSize="20sp"/>
                        <TextView
@@ -105,7 +105,7 @@
                    <LinearLayout
                        android:layout_width="70dp"
                        android:layout_height="match_parent"
-                       android:background="@color/Thame"
+                       android:background="@color/Theme"
                        >
 
                    </LinearLayout>
@@ -121,7 +121,7 @@
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
                            android:text="Pemasukan"
-                           android:textColor="@color/Thame"
+                           android:textColor="@color/Theme"
                            android:textStyle="bold"
                            android:textSize="20sp"/>
                        <TextView
@@ -145,7 +145,7 @@
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
                            android:text="Rp. 200000.00"
-                           android:textColor="@color/Thame"
+                           android:textColor="@color/Theme"
                            android:textStyle="bold"
                            android:textSize="20sp"/>
                        <TextView
@@ -174,7 +174,7 @@
                    <LinearLayout
                        android:layout_width="70dp"
                        android:layout_height="match_parent"
-                       android:background="@color/Thame"
+                       android:background="@color/Theme"
                        >
 
                    </LinearLayout>
@@ -190,7 +190,7 @@
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
                            android:text="Pemasukan"
-                           android:textColor="@color/Thame"
+                           android:textColor="@color/Theme"
                            android:textStyle="bold"
                            android:textSize="20sp"/>
                        <TextView
@@ -214,7 +214,7 @@
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
                            android:text="Rp. 200000.00"
-                           android:textColor="@color/Thame"
+                           android:textColor="@color/Theme"
                            android:textStyle="bold"
                            android:textSize="20sp"/>
                        <TextView
@@ -243,7 +243,7 @@
                    <LinearLayout
                        android:layout_width="70dp"
                        android:layout_height="match_parent"
-                       android:background="@color/Thame"
+                       android:background="@color/Theme"
                        >
 
                    </LinearLayout>
@@ -259,7 +259,7 @@
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
                            android:text="Pemasukan"
-                           android:textColor="@color/Thame"
+                           android:textColor="@color/Theme"
                            android:textStyle="bold"
                            android:textSize="20sp"/>
                        <TextView
@@ -283,7 +283,7 @@
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
                            android:text="Rp. 200000.00"
-                           android:textColor="@color/Thame"
+                           android:textColor="@color/Theme"
                            android:textStyle="bold"
                            android:textSize="20sp"/>
                        <TextView
@@ -312,7 +312,7 @@
                    <LinearLayout
                        android:layout_width="70dp"
                        android:layout_height="match_parent"
-                       android:background="@color/Thame"
+                       android:background="@color/Theme"
                        >
 
                    </LinearLayout>
@@ -328,7 +328,7 @@
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
                            android:text="Pemasukan"
-                           android:textColor="@color/Thame"
+                           android:textColor="@color/Theme"
                            android:textStyle="bold"
                            android:textSize="20sp"/>
                        <TextView
@@ -352,7 +352,7 @@
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
                            android:text="Rp. 200000.00"
-                           android:textColor="@color/Thame"
+                           android:textColor="@color/Theme"
                            android:textStyle="bold"
                            android:textSize="20sp"/>
                        <TextView
@@ -381,7 +381,7 @@
                    <LinearLayout
                        android:layout_width="70dp"
                        android:layout_height="match_parent"
-                       android:background="@color/Thame"
+                       android:background="@color/Theme"
                        >
 
                    </LinearLayout>
@@ -397,7 +397,7 @@
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
                            android:text="Pemasukan"
-                           android:textColor="@color/Thame"
+                           android:textColor="@color/Theme"
                            android:textStyle="bold"
                            android:textSize="20sp"/>
                        <TextView
@@ -421,7 +421,7 @@
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
                            android:text="Rp. 200000.00"
-                           android:textColor="@color/Thame"
+                           android:textColor="@color/Theme"
                            android:textStyle="bold"
                            android:textSize="20sp"/>
                        <TextView
@@ -450,7 +450,7 @@
                    <LinearLayout
                        android:layout_width="70dp"
                        android:layout_height="match_parent"
-                       android:background="@color/Thame"
+                       android:background="@color/Theme"
                        >
 
                    </LinearLayout>
@@ -466,7 +466,7 @@
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
                            android:text="Pemasukan"
-                           android:textColor="@color/Thame"
+                           android:textColor="@color/Theme"
                            android:textStyle="bold"
                            android:textSize="20sp"/>
                        <TextView
@@ -490,7 +490,7 @@
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
                            android:text="Rp. 200000.00"
-                           android:textColor="@color/Thame"
+                           android:textColor="@color/Theme"
                            android:textStyle="bold"
                            android:textSize="20sp"/>
                        <TextView
@@ -519,7 +519,7 @@
                    <LinearLayout
                        android:layout_width="70dp"
                        android:layout_height="match_parent"
-                       android:background="@color/Thame"
+                       android:background="@color/Theme"
                        >
 
                    </LinearLayout>
@@ -535,7 +535,7 @@
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
                            android:text="Pemasukan"
-                           android:textColor="@color/Thame"
+                           android:textColor="@color/Theme"
                            android:textStyle="bold"
                            android:textSize="20sp"/>
                        <TextView
@@ -559,7 +559,7 @@
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
                            android:text="Rp. 200000.00"
-                           android:textColor="@color/Thame"
+                           android:textColor="@color/Theme"
                            android:textStyle="bold"
                            android:textSize="20sp"/>
                        <TextView
