@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/Theme"
+    tools:context=".Fragment.Fragment3">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_regular"
+        android:textSize="18dp"
+        android:textColor="#ffffff"
+        android:layout_marginHorizontal="20dp"
+        android:text="Saldoku"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Rp"
+            android:fontFamily="@font/poppins_bold"
+            android:textAlignment="center"
+            android:textColor="#ffffff"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textAlignment="center"
+            android:textSize="80dp"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="#ffffff"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="@drawable/line_grey" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="10dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_topup"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/outline_button"
+            android:text="TopUp"
+            android:textColor="#ffffff"
+            android:fontFamily="@font/poppins_medium"
+            android:textAlignment="center"
+            />
+
+        <Button
+            android:id="@+id/btn_kirim"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/outline_button"
+            android:text="Kirim"
+            android:textColor="#ffffff"
+            android:fontFamily="@font/poppins_medium"
+            android:textAlignment="center"
+            />
+        <Button
+            android:id="@+id/btn_minta"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/outline_button"
+            android:text="Minta"
+            android:textColor="#ffffff"
+            android:fontFamily="@font/poppins_medium"
+            android:textAlignment="center"
+            />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pengeluaran Terbesar"
+        android:fontFamily="@font/poppins_regular"
+        android:layout_marginVertical="10dp"
+        android:textColor="#ffffff"
+        android:textAlignment="center"/>
+
+
+
+</LinearLayout>

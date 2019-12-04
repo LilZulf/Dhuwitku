@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Pemasukan"
-            android:textColor="@color/Thame"
+            android:textColor="@color/Theme"
             android:textStyle="bold"
             android:textSize="20sp"/>
 
@@ -39,7 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rp."
-                android:textColor="@color/Thame"
+                android:textColor="@color/Theme"
                 android:textStyle="bold"
                 android:textSize="20sp" />
             <TextView
@@ -49,7 +49,7 @@
                 android:text="20.000,00"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="@color/Thame"
+                android:textColor="@color/Theme"
                 android:layout_toRightOf="@id/tv_rp_riwayat_pemasukan"/>
 
         </RelativeLayout>

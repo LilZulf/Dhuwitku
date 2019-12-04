@@ -5,11 +5,13 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.github.rplezy.Dhuwitku.Fragment.Fragment1
 import com.github.rplezy.Dhuwitku.Fragment.Fragment2
+import com.github.rplezy.Dhuwitku.Fragment.Fragment3
 
 class MyPagerAdapter(fm: FragmentManager): FragmentPagerAdapter(fm){
     private val pages = listOf(
         Fragment1(),
-        Fragment2()
+        Fragment2(),
+        Fragment3()
     )
 
     // menentukan fragment yang akan dibuka pada posisi tertentu

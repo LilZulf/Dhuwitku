@@ -3,6 +3,7 @@
     package="com.github.rplezy.Dhuwitku">
 
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -12,13 +13,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddKategori"/>
-        <activity android:name=".DetailRiwayat"></activity>
+        <activity android:name=".KirimSaldo"></activity>
+        <activity android:name=".AddKategori" />
+        <activity android:name=".DetailRiwayat" />
         <activity android:name=".QrScanner" />
         <activity android:name=".Add" />
         <activity android:name=".Register" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".RiwayatActivity"/>
+        <activity android:name=".RiwayatActivity" />
         <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

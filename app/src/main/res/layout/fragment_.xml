@@ -190,7 +190,7 @@
             android:layout_marginBottom="10dp"
             android:backgroundTint="@color/Theme"
             android:visibility="gone"
-            android:src="@drawable/ic_add"/>
+            android:src="@drawable/ic_unfold_less24dp"/>
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab3"
             android:layout_width="wrap_content"
@@ -201,7 +201,7 @@
             android:layout_above="@id/fab2"
             android:layout_marginBottom="10dp"
             android:backgroundTint="@color/Theme"
-            android:src="@drawable/ic_add"
+            android:src="@drawable/ic_list_kategori24dp"
             android:visibility="gone"
             />
 
