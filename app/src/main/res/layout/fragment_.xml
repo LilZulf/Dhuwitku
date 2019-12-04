@@ -98,13 +98,14 @@
             android:layout_marginVertical="100dp"
             android:orientation="vertical">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="120dp"
+                    android:id="@+id/tv_main_pengeluaran"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:text="Pengeluaran"
                     android:fontFamily="@font/poppins_bold"
@@ -115,28 +116,38 @@
                     android:layout_marginHorizontal="5dp"
                     android:text=":"
                     android:fontFamily="@font/poppins_bold"
-                    android:textSize="18dp"/>
-                <TextView
+                    android:textSize="18dp"
+                    android:layout_toRightOf="@id/tv_main_pengeluaran"/>
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Rp."
-                    android:fontFamily="@font/poppins_bold"
-                    android:textSize="18dp"/>
-                <TextView
-                    android:id="@+id/UangKeluar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="20000"
-                    android:textSize="18dp"/>
-            </LinearLayout>
-            <LinearLayout
+                    android:gravity="end"
+                    android:layout_alignParentRight="true">
+                    <TextView
+                        android:id="@+id/tv_rp_main"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rp. "
+                        android:fontFamily="@font/poppins_bold"
+                        android:textSize="18dp"/>
+                    <TextView
+                        android:id="@+id/UangKeluar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="20000"
+                        android:textSize="18dp"
+                        android:layout_toRightOf="@id/tv_rp_main"/>
+                </RelativeLayout>
+            </RelativeLayout>
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="120dp"
+                    android:id="@+id/tv_main_pemasukan"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:text="Pengeluaran"
                     android:fontFamily="@font/poppins_bold"
@@ -149,23 +160,32 @@
                     android:text=":"
                     android:fontFamily="@font/poppins_bold"
                     android:textColor="@color/Theme"
-                    android:textSize="18dp"/>
-                <TextView
+                    android:textSize="18dp"
+                    android:layout_toRightOf="@id/tv_main_pemasukan"/>
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Rp."
-                    android:fontFamily="@font/poppins_bold"
-                    android:textColor="@color/Theme"
-                    android:textSize="18dp"/>
-                <TextView
-                    android:id="@+id/UangMasuk"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="0"
-                    android:textColor="@color/Theme"
-                    android:textSize="18dp"/>
-            </LinearLayout>
+                    android:gravity="end"
+                    android:layout_alignParentRight="true">
+                    <TextView
+                        android:id="@+id/tv_rp_main2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rp. "
+                        android:fontFamily="@font/poppins_bold"
+                        android:textColor="@color/Theme"
+                        android:textSize="18dp"/>
+                    <TextView
+                        android:id="@+id/UangMasuk"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="0"
+                        android:textColor="@color/Theme"
+                        android:textSize="18dp"
+                        android:layout_toRightOf="@id/tv_rp_main2"/>
+                </RelativeLayout>
+            </RelativeLayout>
 
         </LinearLayout>
 
