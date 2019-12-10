@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".KirimSaldo"></activity>
+        <activity android:name=".QrGenerate"></activity>
+        <activity android:name=".KirimSaldo" />
         <activity android:name=".AddKategori" />
         <activity android:name=".DetailRiwayat" />
         <activity android:name=".QrScanner" />
