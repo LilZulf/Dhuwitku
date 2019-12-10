@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_150sdp"
+    android:background="@drawable/bgdialog">
+
+    <TextView
+        android:id="@+id/tv_email_verif"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="EMAIL VERIFICATION"
+        android:textSize="@dimen/_20sdp"
+        android:textAlignment="center"
+        android:textColor="@color/Theme"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_5sdp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="You must confirm your email to unlock top up feature"
+        android:textSize="@dimen/_15sdp"
+        android:layout_below="@id/tv_email_verif"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/btn_email_verif"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/_10sdp"
+        android:text="VERIFY EMAIL"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_15sdp"
+        android:background="@color/Theme"/>
+
+</RelativeLayout>
