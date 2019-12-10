@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:textSize="36dp"
+        android:textSize="@dimen/_30sdp"
         android:textColor="#808080"
         android:text="Sign UP"
         android:fontFamily="@font/poppins_bold"/>
@@ -21,63 +21,44 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18dp"
+        android:textSize="@dimen/_15sdp"
         android:layout_gravity="center"
         android:text="Daftar untuk masuk aplikasi"/>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="180dp"
+        android:layout_width="@dimen/_140sdp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:layout_height="wrap_content">
+
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:inputType="text"
             android:hint="Email"
-            android:id="@+id/usrEmail"
-            />
+            android:id="@+id/usrEmail" />
+
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="180dp"
+        android:layout_width="@dimen/_140sdp"
         android:layout_gravity="center"
         app:passwordToggleEnabled="true"
         android:layout_height="wrap_content">
+
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:inputType="textPassword"
             android:hint="Password"
-            android:id="@+id/usrPass"
-            />
+            android:id="@+id/usrPass" />
+
     </com.google.android.material.textfield.TextInputLayout>
 
-<!--    <EditText-->
-<!--        android:id="@+id/InputUsername"-->
-<!--        android:layout_width="180dp"-->
-<!--        android:layout_height="40dp"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:hint="username"-->
-<!--        android:textColorHint="#808080"-->
-<!--        android:fontFamily="@font/poppins_regular"-->
-<!--        android:layout_marginTop="40dp"-->
-<!--        />-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/InputPassword"-->
-<!--        android:layout_width="180dp"-->
-<!--        android:layout_height="40dp"-->
-<!--        android:inputType="textPassword"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:textColorHint="#808080"-->
-<!--        android:hint="password"-->
-<!--        android:fontFamily="@font/poppins_regular"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        />-->
     <Button
         android:id="@+id/ButtonSign"
-        android:layout_width="180dp"
-        android:layout_height="40dp"
+        android:layout_width="@dimen/_140sdp"
+        android:layout_height="@dimen/_35sdp"
         android:background="@drawable/button"
         android:text="SignUp"
         android:textColor="#ffffff"
@@ -97,14 +78,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="14dp"
+            android:textSize="@dimen/_11sdp"
             android:layout_gravity="center"
             android:text="Punya akun?"/>
         <TextView
             android:id="@+id/Login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="14dp"
+            android:textSize="@dimen/_11sdp"
             android:textColor="#03A9F4"
             android:layout_gravity="center"
             android:text="Masuk disini"/>

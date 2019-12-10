@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "161246100484",
+    "firebase_url": "https://dhuwitku-d67c5.firebaseio.com",
+    "project_id": "dhuwitku-d67c5",
+    "storage_bucket": "dhuwitku-d67c5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:161246100484:android:46739f5b839bab3cac4951",
+        "android_client_info": {
+          "package_name": "com.github.rplezy.Dhuwitku"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "161246100484-5lf37v2cqkp5vnq3a9n4dlq72tlluk5b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.github.rplezy.Dhuwitku",
+            "certificate_hash": "13775140f96bd6c6dcc448b52fc2514f1d74b424"
+          }
+        },
+        {
+          "client_id": "161246100484-7pns47p2fidq4cag17nsns3nj4ikf31u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDq5FwwaT9bfWZHwd_tzJnMf6ebVwXqM_g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "161246100484-7pns47p2fidq4cag17nsns3nj4ikf31u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

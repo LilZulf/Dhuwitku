@@ -17,12 +17,12 @@
         <LinearLayout
             android:id="@+id/DateNow"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="@dimen/_60sdp"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="@dimen/_50sdp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -31,7 +31,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_medium"
                     android:text="Hari ini"
-                    android:textSize="18dp" />
+                    android:textSize="@dimen/_15sdp" />
 
                 <TextView
                     android:id="@+id/date"
@@ -40,7 +40,7 @@
                     android:layout_marginLeft="5dp"
                     android:fontFamily="@font/poppins_bold"
                     android:text="22 Mei 2019"
-                    android:textSize="18dp" />
+                    android:textSize="@dimen/_15sdp" />
             </LinearLayout>
 
             <ImageView
@@ -51,44 +51,12 @@
 
         </LinearLayout>
 
-        <LinearLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_main_today"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_below="@+id/DateNow"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:layout_marginHorizontal="10dp"
-                android:src="@drawable/lunch" />
-
-            <TextView
-                android:id="@+id/JudulTransaksi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Makan"
-                android:textSize="18dp" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginHorizontal="10dp"
-                    android:gravity="center"
-                    android:text="Rp.20.000,00"
-                    android:textSize="18dp" />
-            </RelativeLayout>
-
-
-        </LinearLayout>
-
+            android:layout_height="match_parent"
+            android:layout_below="@id/DateNow"
+            android:layout_margin="@dimen/_7sdp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -105,7 +73,7 @@
 
                 <TextView
                     android:id="@+id/tv_main_pengeluaran"
-                    android:layout_width="150dp"
+                    android:layout_width="@dimen/_125sdp"
                     android:layout_height="wrap_content"
                     android:text="Pengeluaran"
                     android:fontFamily="@font/poppins_bold"
@@ -147,7 +115,7 @@
 
                 <TextView
                     android:id="@+id/tv_main_pemasukan"
-                    android:layout_width="150dp"
+                    android:layout_width="@dimen/_125sdp"
                     android:layout_height="wrap_content"
                     android:text="Pengeluaran"
                     android:fontFamily="@font/poppins_bold"
