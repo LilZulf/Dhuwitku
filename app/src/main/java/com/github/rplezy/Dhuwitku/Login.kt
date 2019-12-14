@@ -80,7 +80,7 @@ class Login : AppCompatActivity() {
             startActivity(daf)
         }
         SignUp.setOnClickListener {
-            val daf = Intent(applicationContext,Register::class.java)
+            val daf = Intent(this,Register::class.java)
             finish()
             startActivity(daf)
         }

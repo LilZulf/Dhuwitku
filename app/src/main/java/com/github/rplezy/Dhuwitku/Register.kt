@@ -61,7 +61,7 @@ class Register : AppCompatActivity() {
         }
 
         Login.setOnClickListener {
-            val daf = Intent(this,Login::class.java)
+            val daf = Intent(this@Register,com.github.rplezy.Dhuwitku.Login::class.java)
             daf.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(daf)
         }
