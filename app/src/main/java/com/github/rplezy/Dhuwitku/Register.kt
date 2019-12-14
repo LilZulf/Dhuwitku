@@ -5,9 +5,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
+import android.view.View
 import android.view.Window
 import android.widget.Button
 import android.widget.Toast
+import com.github.rplezy.Dhuwitku.Config.Service
+import com.github.rplezy.Dhuwitku.Model.UserModel
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.android.material.textfield.TextInputEditText
@@ -15,6 +18,9 @@ import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_register.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class Register : AppCompatActivity() {
 
@@ -27,12 +33,17 @@ class Register : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
 
         ButtonSign.setOnClickListener {
+            val username = usrName.text.toString().trim()
             val email = usrEmail.text.toString().trim()
             val pass = usrPass.text.toString().trim()
 
             if (email.isEmpty()){
                 usrEmail.error = "Harap isi alamat email"
                 usrEmail.requestFocus()
+            }
+            if(username.isEmpty()){
+                usrName.error = "Harap isi username"
+                usrName.requestFocus()
             }
 
             if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
@@ -49,15 +60,16 @@ class Register : AppCompatActivity() {
                 usrPass.error = "Panjang kata sandi minimal 8 karakter"
                 usrPass.requestFocus()
             }
-
-            firebaseAuth.createUserWithEmailAndPassword(email,pass)
-                .addOnCompleteListener {
-                    if (!it.isSuccessful){
-                        Toast.makeText(this, "Register Failed..", Toast.LENGTH_SHORT).show()
-                    }else{
-                        showDialog()
-                    }
-                }
+//            rvloading.visibility = View.VISIBLE
+//            doRegister()
+//            firebaseAuth.createUserWithEmailAndPassword(email,pass)
+//                .addOnCompleteListener {
+//                    if (!it.isSuccessful){
+//                        Toast.makeText(this, "Register Failed..", Toast.LENGTH_SHORT).show()
+//                    }else{
+//                        showDialog()
+//                    }
+//                }
         }
 
         Login.setOnClickListener {
@@ -66,6 +78,37 @@ class Register : AppCompatActivity() {
             startActivity(daf)
         }
     }
+    private fun doRegister(){
+
+        var registAPI = Service.get().doRegister(
+            usrName.text.toString(),
+            usrEmail.text.toString(),
+            usrPass.text.toString()
+        )
+
+        registAPI.enqueue(object : Callback<UserModel> {
+            override fun onFailure(call: Call<UserModel>, t: Throwable) {
+                Toast.makeText(applicationContext,t.message, Toast.LENGTH_LONG).show()
+            }
+
+            override fun onResponse(call: Call<UserModel>, response: Response<UserModel>) {
+                if(response.body()!!.message != "Email Sudah Digunakan"){
+                    rvloading.visibility = View.GONE
+                    val intent = Intent(applicationContext,com.github.rplezy.Dhuwitku.Login::class.java)
+                    Toast.makeText(applicationContext,"Silahkan Login :)", Toast.LENGTH_SHORT).show()
+                    startActivity(intent)
+                    finish()
+                }
+                else{
+                    rvloading.visibility = View.GONE
+                    Toast.makeText(applicationContext,response.body()!!.message, Toast.LENGTH_SHORT).show()
+                }
+
+            }
+
+        })
+    }
+
 
     private fun showDialog(){
         val dialog = Dialog(this)

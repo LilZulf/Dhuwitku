@@ -60,20 +60,20 @@ class Login : AppCompatActivity() {
                 usrPassLogin.requestFocus()
             }
 
-            firebaseAuth.signInWithEmailAndPassword(email,pass)
-                .addOnCompleteListener {
-                    if (!it.isSuccessful){
-                        if (usrPassLogin.length() < 8){
-                            usrPassLogin.error = "Password salah"
-                        }else{
-                            Toast.makeText(this, "Auth Failed", Toast.LENGTH_SHORT).show()
-                        }
-                    }else{
-                        val intent = Intent(this, MainActivity::class.java)
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                        startActivity(intent)
-                    }
-                }
+//            firebaseAuth.signInWithEmailAndPassword(email,pass)
+//                .addOnCompleteListener {
+//                    if (!it.isSuccessful){
+//                        if (usrPassLogin.length() < 8){
+//                            usrPassLogin.error = "Password salah"
+//                        }else{
+//                            Toast.makeText(this, "Auth Failed", Toast.LENGTH_SHORT).show()
+//                        }
+//                    }else{
+//                        val intent = Intent(this, MainActivity::class.java)
+//                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+//                        startActivity(intent)
+//                    }
+//                }
 
             val daf = Intent(applicationContext,MainActivity::class.java)
             finish()

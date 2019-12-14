@@ -1,94 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/bgauth"
     android:gravity="center"
     tools:context=".Register">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textSize="@dimen/_30sdp"
-        android:textColor="#808080"
-        android:text="Sign UP"
-        android:fontFamily="@font/poppins_bold"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/_15sdp"
-        android:layout_gravity="center"
-        android:text="Daftar untuk masuk aplikasi"/>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="@dimen/_140sdp"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#4A000000"
+        android:elevation="1dp"
+        android:visibility="gone"
+        android:id="@+id/rvloading"
+        >
+        <ProgressBar
+            android:id="@+id/progressBar_cyclic"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="text"
-            android:hint="Email"
-            android:id="@+id/usrEmail" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="@dimen/_140sdp"
-        android:layout_gravity="center"
-        app:passwordToggleEnabled="true"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:hint="Password"
-            android:id="@+id/usrPass" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <Button
-        android:id="@+id/ButtonSign"
-        android:layout_width="@dimen/_140sdp"
-        android:layout_height="@dimen/_35sdp"
-        android:background="@drawable/button"
-        android:text="SignUp"
-        android:textColor="#ffffff"
-        android:fontFamily="@font/poppins_medium"
-        android:textAlignment="center"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:layout_marginTop="40dp"
-        />
-
+            android:minHeight="50dp"
+            android:minWidth="50dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10px"
-        android:gravity="center">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:elevation="-1dp"
+        android:background="@drawable/bgauth"
+        >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/_11sdp"
             android:layout_gravity="center"
-            android:text="Punya akun?"/>
+            android:textSize="@dimen/_30sdp"
+            android:textColor="#808080"
+            android:text="Sign UP"
+            android:fontFamily="@font/poppins_bold"/>
+
         <TextView
-            android:id="@+id/Login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/_11sdp"
-            android:textColor="#03A9F4"
+            android:textSize="@dimen/_15sdp"
             android:layout_gravity="center"
-            android:text=" Masuk disini"/>
+            android:text="Daftar untuk masuk aplikasi"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="@dimen/_140sdp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:hint="Email"
+                android:id="@+id/usrEmail" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="@dimen/_140sdp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="Username"
+                android:id="@+id/usrName" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="@dimen/_140sdp"
+            android:layout_gravity="center"
+            app:passwordToggleEnabled="true"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="Password"
+                android:id="@+id/usrPass" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/ButtonSign"
+            android:layout_width="@dimen/_140sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:background="@drawable/button"
+            android:text="SignUp"
+            android:textColor="#ffffff"
+            android:fontFamily="@font/poppins_medium"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="40dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10px"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_11sdp"
+                android:layout_gravity="center"
+                android:text="Punya akun?"/>
+            <TextView
+                android:id="@+id/Login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/_11sdp"
+                android:textColor="#03A9F4"
+                android:layout_gravity="center"
+                android:text=" Masuk disini"/>
+        </LinearLayout>
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>
