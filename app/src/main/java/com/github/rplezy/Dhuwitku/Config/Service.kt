@@ -7,7 +7,7 @@ object Service {
     private  var endpoint : Endpoint ? = null
 
     //private val BASE_URL = "http://{your host}/api-skeleton/dhuwitkuBeta1/"
-    private val BASE_URL = "http://192.168.1.7/api-skeleton/dhuwitkuBeta1/"
+    private val BASE_URL = "http://192.168.43.238/api-skeleton/dhuwitkuBeta1/"
 
     fun get(): Endpoint {
         if (endpoint == null){

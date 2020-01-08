@@ -60,8 +60,8 @@ class Register : AppCompatActivity() {
                 usrPass.error = "Panjang kata sandi minimal 8 karakter"
                 usrPass.requestFocus()
             }
-//            rvloading.visibility = View.VISIBLE
-//            doRegister()
+            rvloading.visibility = View.VISIBLE
+            doRegister()
 //            firebaseAuth.createUserWithEmailAndPassword(email,pass)
 //                .addOnCompleteListener {
 //                    if (!it.isSuccessful){
