@@ -19,11 +19,12 @@ class QrGenerate : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_qr_generate)
 
-        start.setOnClickListener {
-            edt_value.text.toString().trim()
-            if (edt_value.length() > 0) {
-                val manager =
-                    getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        var qrdata : String = "123"
+
+
+//            edt_value.text.toString().trim()
+//            if (edt_value.length() > 0) {
+                val manager = getSystemService(Context.WINDOW_SERVICE) as WindowManager
                 val display = manager.defaultDisplay
                 val point = Point()
                 display.getSize(point)
@@ -32,7 +33,7 @@ class QrGenerate : AppCompatActivity() {
                 var smallerDimension = if (width < height) width else height
                 smallerDimension = smallerDimension * 3 / 4
                 val qrgEncoder = QRGEncoder(
-                    edt_value.text.toString(), null,
+                    qrdata, null,
                     QRGContents.Type.TEXT,
                     smallerDimension
                 )
@@ -42,11 +43,9 @@ class QrGenerate : AppCompatActivity() {
                 } catch (e: WriterException) {
                     Log.v(TAG, "error")
                 }
-            } else {
-                edt_value.error = "Required"
-            }
-
-        }
+//            } else {
+//                edt_value.error = "Required"
+//            }
 
     }
 }

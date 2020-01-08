@@ -12,6 +12,7 @@ import androidmads.library.qrgenearator.QRGContents
 import androidmads.library.qrgenearator.QRGEncoder
 import androidx.fragment.app.Fragment
 import com.github.rplezy.Dhuwitku.QrGenerate
+import com.github.rplezy.Dhuwitku.QrScanner
 import com.github.rplezy.Dhuwitku.R
 import com.github.rplezy.Dhuwitku.TopUp
 import com.google.zxing.WriterException
@@ -35,7 +36,7 @@ class Fragment3 : Fragment() {
         val view: View = inflater.inflate(R.layout.fragment3, container, false)
 
         view.btn_kirim.setOnClickListener {
-            val intent = Intent(context, QrGenerate::class.java)
+            val intent = Intent(context, QrScanner::class.java)
             startActivity(intent)
         }
         view.btn_minta.setOnClickListener {
