@@ -8,12 +8,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
+import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.github.rplezy.Dhuwitku.Config.Service
+import com.github.rplezy.Dhuwitku.Model.UserModel
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_register.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class Login : AppCompatActivity() {
 
@@ -59,7 +64,8 @@ class Login : AppCompatActivity() {
                 usrPassLogin.error = "Harap masukkan kata sandi"
                 usrPassLogin.requestFocus()
             }
-
+            rvloading.visibility = View.VISIBLE
+            doLogin()
 //            firebaseAuth.signInWithEmailAndPassword(email,pass)
 //                .addOnCompleteListener {
 //                    if (!it.isSuccessful){
@@ -75,15 +81,44 @@ class Login : AppCompatActivity() {
 //                    }
 //                }
 
-            val daf = Intent(applicationContext,MainActivity::class.java)
-            finish()
-            startActivity(daf)
+//            val daf = Intent(applicationContext,MainActivity::class.java)
+//            finish()
+//            startActivity(daf)
         }
         SignUp.setOnClickListener {
             val daf = Intent(this,Register::class.java)
             finish()
             startActivity(daf)
         }
+    }
+    private fun doLogin(){
+
+        var registAPI = Service.get().doLogin(
+            usrEmailLogin.text.toString(),
+            usrPassLogin.text.toString()
+        )
+
+        registAPI.enqueue(object : Callback<UserModel> {
+            override fun onFailure(call: Call<UserModel>, t: Throwable) {
+                Toast.makeText(applicationContext,t.message, Toast.LENGTH_LONG).show()
+            }
+
+            override fun onResponse(call: Call<UserModel>, response: Response<UserModel>) {
+                if(response.body()!!.message == "Success login"){
+                    rvloading.visibility = View.GONE
+                    val intent = Intent(applicationContext,com.github.rplezy.Dhuwitku.MainActivity::class.java)
+                    Toast.makeText(applicationContext,"Login Berhasil :)", Toast.LENGTH_SHORT).show()
+                    startActivity(intent)
+                    finish()
+                }
+                else{
+                    rvloading.visibility = View.GONE
+                    Toast.makeText(applicationContext,response.body()!!.message, Toast.LENGTH_SHORT).show()
+                }
+
+            }
+
+        })
     }
 
 
