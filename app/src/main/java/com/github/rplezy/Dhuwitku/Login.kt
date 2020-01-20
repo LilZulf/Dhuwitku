@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.github.rplezy.Dhuwitku.Config.Service
+import com.github.rplezy.Dhuwitku.Model.SharedPreferences
 import com.github.rplezy.Dhuwitku.Model.UserModel
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
@@ -23,28 +24,36 @@ import retrofit2.Response
 class Login : AppCompatActivity() {
 
     private val PERMISSION_REQUEST_CODE = 200
+    private var data : SharedPreferences ? = null
     private val TAG = "PermissionDemo"
     lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
+        data = SharedPreferences(applicationContext!!)
         firebaseAuth = FirebaseAuth.getInstance()
+        if(data!!.getSession("LOGIN") == true){
+            val intent = Intent(applicationContext, MainActivity::class.java)
+            startActivity(intent)
+            finish()
 
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.CAMERA)
-            != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                    Manifest.permission.CAMERA)) {
+        }else{
+            if (ContextCompat.checkSelfPermission(this,
+                    Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+                if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                        Manifest.permission.CAMERA)) {
+                } else {
+                    ActivityCompat.requestPermissions(this,
+                        arrayOf(Manifest.permission.CAMERA),
+                        PERMISSION_REQUEST_CODE)
+                }
             } else {
-                ActivityCompat.requestPermissions(this,
-                    arrayOf(Manifest.permission.CAMERA),
-                    PERMISSION_REQUEST_CODE)
+                // Permission has already been granted
             }
-        } else {
-            // Permission has already been granted
         }
+
 
         ButtonLogin.setOnClickListener {
             val email = usrEmailLogin.text.toString().trim()
@@ -108,6 +117,8 @@ class Login : AppCompatActivity() {
                     rvloading.visibility = View.GONE
                     val intent = Intent(applicationContext,com.github.rplezy.Dhuwitku.MainActivity::class.java)
                     Toast.makeText(applicationContext,"Login Berhasil :)", Toast.LENGTH_SHORT).show()
+                    data!!.setString("ID_USER",response.body()!!.data!!.id_user.toString())
+                    data!!.session("LOGIN",true)
                     startActivity(intent)
                     finish()
                 }

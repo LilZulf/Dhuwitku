@@ -19,4 +19,9 @@ interface Endpoint {
         @Field("email") email: String,
         @Field("pass") password: String
     ): Call<UserModel>
+    @POST("auth/getUserById")
+    @FormUrlEncoded
+    fun getById(
+        @Field("idUser") name: String
+    ): Call<UserModel>
 }
