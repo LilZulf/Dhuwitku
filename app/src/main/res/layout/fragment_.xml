@@ -54,7 +54,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_main_today"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@id/DateNow"
             android:layout_margin="@dimen/_7sdp"/>
 
@@ -73,7 +73,7 @@
 
                 <TextView
                     android:id="@+id/tv_main_pengeluaran"
-                    android:layout_width="@dimen/_125sdp"
+                    android:layout_width="@dimen/_120sdp"
                     android:layout_height="wrap_content"
                     android:text="Pengeluaran"
                     android:fontFamily="@font/poppins_bold"
@@ -103,7 +103,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_medium"
-                        android:text="20000"
+                        android:text="20.000,00"
                         android:textSize="18dp"
                         android:layout_toRightOf="@id/tv_rp_main"/>
                 </RelativeLayout>
@@ -115,7 +115,7 @@
 
                 <TextView
                     android:id="@+id/tv_main_pemasukan"
-                    android:layout_width="@dimen/_125sdp"
+                    android:layout_width="@dimen/_120sdp"
                     android:layout_height="wrap_content"
                     android:text="Pengeluaran"
                     android:fontFamily="@font/poppins_bold"
@@ -148,7 +148,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_medium"
-                        android:text="0"
+                        android:text="100.000,00"
                         android:textColor="@color/Theme"
                         android:textSize="18dp"
                         android:layout_toRightOf="@id/tv_rp_main2"/>

@@ -17,6 +17,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -60,20 +61,20 @@ class Register : AppCompatActivity() {
                 usrPass.error = "Panjang kata sandi minimal 8 karakter"
                 usrPass.requestFocus()
             }
-            rvloading.visibility = View.VISIBLE
+//            rvloading.visibility = View.VISIBLE
             doRegister()
-//            firebaseAuth.createUserWithEmailAndPassword(email,pass)
-//                .addOnCompleteListener {
-//                    if (!it.isSuccessful){
-//                        Toast.makeText(this, "Register Failed..", Toast.LENGTH_SHORT).show()
-//                    }else{
-//                        showDialog()
-//                    }
-//                }
+            firebaseAuth.createUserWithEmailAndPassword(email,pass)
+                .addOnCompleteListener {
+                    if (!it.isSuccessful){
+                        Toast.makeText(this, "Register Failed..", Toast.LENGTH_SHORT).show()
+                    }else{
+                        sendVerification()
+                    }
+                }
         }
 
         Login.setOnClickListener {
-            val daf = Intent(this@Register,com.github.rplezy.Dhuwitku.Login::class.java)
+            val daf = Intent(this@Register,Login::class.java)
             daf.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(daf)
         }
@@ -109,6 +110,20 @@ class Register : AppCompatActivity() {
         })
     }
 
+    private fun sendVerification(){
+        val user = firebaseAuth.currentUser
+        user?.sendEmailVerification()
+            ?.addOnCompleteListener {
+                if(it.isSuccessful){
+                    Toast.makeText(this, "Your email sent to ${user.email}", Toast.LENGTH_LONG).show()
+                    val intent = Intent(this, Login::class.java)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    startActivity(intent)
+                }else{
+                    Toast.makeText(this, "Failed to send email verification", Toast.LENGTH_LONG).show()
+                }
+            }
+    }
 
     private fun showDialog(){
         val dialog = Dialog(this)
