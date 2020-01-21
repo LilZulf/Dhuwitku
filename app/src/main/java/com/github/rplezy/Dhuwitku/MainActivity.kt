@@ -6,16 +6,23 @@ import android.os.Bundle
 import android.widget.PopupMenu
 import android.widget.Toast
 import com.github.rplezy.Dhuwitku.Adapter.MyPagerAdapter
+import com.github.rplezy.Dhuwitku.Config.Service
+import com.github.rplezy.Dhuwitku.Model.SharedPreferences
+import com.github.rplezy.Dhuwitku.Model.UserModel
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_fragment2.*
 import kotlinx.android.synthetic.main.header.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var firebaseauth : FirebaseAuth
     lateinit var firebaseAuthState : FirebaseAuth.AuthStateListener
+    private var data : SharedPreferences? = null
 
     private val tabIcons =
         intArrayOf(R.drawable.ic_home_black_24dp,
@@ -24,7 +31,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        data = SharedPreferences(applicationContext!!)
         firebaseauth = FirebaseAuth.getInstance()
 
         firebaseAuthState = FirebaseAuth.AuthStateListener {
@@ -47,11 +54,19 @@ class MainActivity : AppCompatActivity() {
             val popupMenu: PopupMenu = PopupMenu(this,iv_more)
             popupMenu.menuInflater.inflate(R.menu.optionmenu,popupMenu.menu)
             popupMenu.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item ->
-                when(item.itemId) {
-                    R.id.about ->
+                when(item!!.itemId) {
+                    R.id.about ->{
                         Toast.makeText(this@MainActivity, "You Clicked : " + item.title, Toast.LENGTH_SHORT).show()
-                    R.id.logout ->
-                        Toast.makeText(this@MainActivity, "You Clicked : " + item.title, Toast.LENGTH_SHORT).show()
+                    }
+
+                    R.id.logout ->{
+                        data!!.session("LOGIN",false)
+//                        val i = Intent(this@Home,Login::class.java)
+//                        startActivity(i)
+                        data!!.clearSharedPreference()
+                        finish()
+                    }
+
                 }
                 true
             })
@@ -64,6 +79,7 @@ class MainActivity : AppCompatActivity() {
         tabs_main.getTabAt(1)?.setIcon(tabIcons[1])
         tabs_main.getTabAt(2)?.setIcon(tabIcons[2])
     }
+
 
 
 }

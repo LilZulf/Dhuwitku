@@ -8,9 +8,13 @@ import android.graphics.Point
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidmads.library.qrgenearator.QRGContents
 import androidmads.library.qrgenearator.QRGEncoder
 import androidx.fragment.app.Fragment
+import com.github.rplezy.Dhuwitku.Config.Service
+import com.github.rplezy.Dhuwitku.Model.SharedPreferences
+import com.github.rplezy.Dhuwitku.Model.UserModel
 import com.github.rplezy.Dhuwitku.QrGenerate
 import com.github.rplezy.Dhuwitku.QrScanner
 import com.github.rplezy.Dhuwitku.R
@@ -18,7 +22,11 @@ import com.github.rplezy.Dhuwitku.TopUp
 import com.google.zxing.WriterException
 import kotlinx.android.synthetic.main.activity_qr_generate.*
 import kotlinx.android.synthetic.main.activity_qr_generate.view.*
+import kotlinx.android.synthetic.main.fragment3.*
 import kotlinx.android.synthetic.main.fragment3.view.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 /**
@@ -26,13 +34,13 @@ import kotlinx.android.synthetic.main.fragment3.view.*
  */
 class Fragment3 : Fragment() {
     private val TAG: String = QrGenerate::class.java.getName()
-
+    private var data : SharedPreferences? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         //Inflate the dialog with custom view
-
+        data = SharedPreferences(activity!!)
         val view: View = inflater.inflate(R.layout.fragment3, container, false)
 
         view.btn_kirim.setOnClickListener {
@@ -50,16 +58,14 @@ class Fragment3 : Fragment() {
             val intent = Intent (context, TopUp::class.java)
             startActivity(intent)
         }
-
+        getData()
         return view
     }
 
     fun showqr() {
-        var qrdata: String = "123"
 
 
-//            edt_value.text.toString().trim()
-//            if (edt_value.length() > 0) {
+        var qrdat : String? = data!!.getString("ID_USER")
         val manager = activity!!.getSystemService(Context.WINDOW_SERVICE) as WindowManager
         val display = manager.defaultDisplay
         val point = Point()
@@ -69,7 +75,7 @@ class Fragment3 : Fragment() {
         var smallerDimension = if (width < height) width else height
         smallerDimension = smallerDimension * 3 / 4
         val qrgEncoder = QRGEncoder(
-            qrdata, null,
+            qrdat, null,
             QRGContents.Type.TEXT,
             smallerDimension
         )
@@ -79,10 +85,31 @@ class Fragment3 : Fragment() {
         } catch (e: WriterException) {
             Log.v(TAG, "error")
         }
-//            } else {
-//                edt_value.error = "Required"
-//            }
 
+    }
+    private fun getData(){
+        Toast.makeText(activity!!,"Fetching data", Toast.LENGTH_SHORT).show()
+        var qrdat : String? = data!!.getString("ID_USER")
+        var getAPI = Service.get().getById(
+            qrdat.toString()
+        )
+
+        getAPI.enqueue(object : Callback<UserModel> {
+            override fun onFailure(call: Call<UserModel>, t: Throwable) {
+                Toast.makeText(activity!!,t.message, Toast.LENGTH_LONG).show()
+            }
+
+            override fun onResponse(call: Call<UserModel>, response: Response<UserModel>) {
+                if(response.body()!!.message == "Succes Fetching data"){
+                    tv_saldo.text = response.body()!!.data!!.saldo
+                }
+                else{
+                    Toast.makeText(activity!!,"Error Fetching", Toast.LENGTH_SHORT).show()
+                }
+
+            }
+
+        })
     }
 }
 
