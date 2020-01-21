@@ -11,7 +11,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:src="@drawable/lunch"
-        android:padding="7dp"/>
+        android:padding="@dimen/_8sdp"/>
 
     <RelativeLayout
         android:id="@+id/rl_riwayat_pemasukan"
@@ -29,7 +29,7 @@
             android:text="Pemasukan"
             android:textColor="@color/Theme"
             android:textStyle="bold"
-            android:textSize="17sp"/>
+            android:textSize="@dimen/_13sdp"/>
 
         <RelativeLayout
             android:id="@+id/rl_riwayat_2"
@@ -45,13 +45,13 @@
                 android:text="Rp."
                 android:textColor="@color/Theme"
                 android:textStyle="bold"
-                android:textSize="17sp" />
+                android:textSize="@dimen/_13sdp" />
             <TextView
                 android:id="@+id/tv_pemasukan_riwayat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="20.000,00"
-                android:textSize="17sp"
+                android:textSize="@dimen/_13sdp"
                 android:textStyle="bold"
                 android:textColor="@color/Theme"
                 android:layout_toRightOf="@id/tv_rp_riwayat_pemasukan"/>
@@ -73,7 +73,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Pengeluaran"
-            android:textSize="17sp"
+            android:textSize="@dimen/_13sdp"
             android:textColor="@color/black" />
 
         <RelativeLayout
@@ -88,14 +88,14 @@
                 android:layout_height="wrap_content"
                 android:text="Rp."
                 android:textColor="@color/black"
-                android:textSize="17sp"/>
+                android:textSize="@dimen/_13sdp"/>
 
             <TextView
                 android:id="@+id/tv_pengeluaran_riwayat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="20.000,00"
-                android:textSize="17sp"
+                android:textSize="@dimen/_13sdp"
                 android:textColor="@color/black"
                 android:layout_toRightOf="@id/tv_rp_riwayat_pengeluaran"/>
 

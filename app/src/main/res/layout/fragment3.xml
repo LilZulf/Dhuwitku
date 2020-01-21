@@ -6,104 +6,105 @@
     android:background="@drawable/gradient"
     tools:context=".Fragment.Fragment3">
 
-
-
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_regular"
-        android:textSize="18dp"
-        android:textColor="#ffffff"
-        android:layout_marginHorizontal="20dp"
-        android:text="Saldoku"/>
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_height="match_parent"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Saldoku"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/_18sdp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Rp"
-            android:fontFamily="@font/poppins_bold"
-            android:textAlignment="center"
-            android:textColor="#ffffff"/>
-        <TextView
-            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Rp"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/_18sdp" />
+
+            <TextView
+                android:id="@+id/tv_saldo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:text="50000"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:textSize="80dp" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/line_white" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="50000"
-            android:textAlignment="center"
-            android:textSize="80dp"
-            android:id="@+id/tv_saldo"
-            android:fontFamily="@font/poppins_medium"
-            android:textColor="#ffffff"/>
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="10dp"
+            android:orientation="horizontal">
 
+            <Button
+                android:id="@+id/btn_topup"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginHorizontal="20dp"
+                android:background="@drawable/outline_button"
+                android:fontFamily="@font/poppins_medium"
+                android:text="topup"
+                android:textAlignment="center"
+                android:textColor="#ffffff" />
+
+            <Button
+                android:id="@+id/btn_kirim"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/outline_button"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Kirim"
+                android:textColor="#ffffff" />
+
+            <Button
+                android:id="@+id/btn_minta"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginHorizontal="20dp"
+                android:background="@drawable/outline_button"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Minta"
+                android:textAlignment="center"
+                android:textColor="#ffffff" />
+
+        </RelativeLayout>
     </LinearLayout>
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:layout_marginHorizontal="20dp"
-        android:background="@drawable/line_white" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginVertical="10dp"
-        android:layout_gravity="center"
-        android:orientation="horizontal">
+    <include
+        layout="@layout/activity_qr_generate"
 
-        <Button
-            android:id="@+id/btn_topup"
-            android:layout_width="60dp"
-            android:layout_height="40dp"
-            android:layout_marginHorizontal="20dp"
-            android:background="@drawable/outline_button"
-            android:text="topup"
-            android:textColor="#ffffff"
-            android:fontFamily="@font/poppins_medium"
-            android:textAlignment="center"
-            />
-
-        <Button
-            android:id="@+id/btn_kirim"
-            android:layout_width="60dp"
-            android:layout_height="40dp"
-            android:layout_marginHorizontal="10dp"
-            android:background="@drawable/outline_button"
-            android:text="Kirim"
-            android:textColor="#ffffff"
-            android:fontFamily="@font/poppins_medium"
-            android:textAlignment="center"
-            />
-        <Button
-            android:id="@+id/btn_minta"
-            android:layout_width="60dp"
-            android:layout_height="40dp"
-            android:layout_marginHorizontal="20dp"
-            android:background="@drawable/outline_button"
-            android:text="Minta"
-            android:textColor="#ffffff"
-            android:fontFamily="@font/poppins_medium"
-            android:textAlignment="center"
-            />
-
-    </LinearLayout>
-</LinearLayout>
-
-    <include layout="@layout/activity_qr_generate"
-
-        android:visibility="gone"/>
-
+        android:visibility="gone" />
 
 
 </RelativeLayout>
