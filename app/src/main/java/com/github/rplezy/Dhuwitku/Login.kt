@@ -73,8 +73,11 @@ class Login : AppCompatActivity() {
                 usrPassLogin.error = "Harap masukkan kata sandi"
                 usrPassLogin.requestFocus()
             }
-            rvloading.visibility = View.VISIBLE
-            doLogin()
+            else {
+                rvloading.visibility = View.VISIBLE
+                doLogin()
+            }
+
 //            firebaseAuth.signInWithEmailAndPassword(email,pass)
 //                .addOnCompleteListener {
 //                    if (!it.isSuccessful){
@@ -96,7 +99,7 @@ class Login : AppCompatActivity() {
         }
         SignUp.setOnClickListener {
             val daf = Intent(this,Register::class.java)
-            finish()
+            //finish()
             startActivity(daf)
         }
     }

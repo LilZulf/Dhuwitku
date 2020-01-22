@@ -61,10 +61,10 @@ class MainActivity : AppCompatActivity() {
 
                     R.id.logout ->{
                         data!!.session("LOGIN",false)
-//                        val i = Intent(this@Home,Login::class.java)
-//                        startActivity(i)
+                        val i = Intent(this@MainActivity,Login::class.java)
                         data!!.clearSharedPreference()
                         finish()
+                        startActivity(i)
                     }
 
                 }

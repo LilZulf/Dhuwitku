@@ -19,34 +19,34 @@ class QrGenerate : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_qr_generate)
 
-        start.setOnClickListener {
-            edt_value.text.toString().trim()
-            if (edt_value.length() > 0) {
-                val manager =
-                    getSystemService(Context.WINDOW_SERVICE) as WindowManager
-                val display = manager.defaultDisplay
-                val point = Point()
-                display.getSize(point)
-                val width = point.x
-                val height = point.y
-                var smallerDimension = if (width < height) width else height
-                smallerDimension = smallerDimension * 3 / 4
-                val qrgEncoder = QRGEncoder(
-                    edt_value.text.toString(), null,
-                    QRGContents.Type.TEXT,
-                    smallerDimension
-                )
-                try {
-                    val bitmap = qrgEncoder.encodeAsBitmap()
-                    qr_image.setImageBitmap(bitmap)
-                } catch (e: WriterException) {
-                    Log.v(TAG, "error")
-                }
-            } else {
-                edt_value.error = "Required"
-            }
-
-        }
+//        start.setOnClickListener {
+//            edt_value.text.toString().trim()
+//            if (edt_value.length() > 0) {
+//                val manager =
+//                    getSystemService(Context.WINDOW_SERVICE) as WindowManager
+//                val display = manager.defaultDisplay
+//                val point = Point()
+//                display.getSize(point)
+//                val width = point.x
+//                val height = point.y
+//                var smallerDimension = if (width < height) width else height
+//                smallerDimension = smallerDimension * 3 / 4
+//                val qrgEncoder = QRGEncoder(
+//                    edt_value.text.toString(), null,
+//                    QRGContents.Type.TEXT,
+//                    smallerDimension
+//                )
+//                try {
+//                    val bitmap = qrgEncoder.encodeAsBitmap()
+//                    qr_image.setImageBitmap(bitmap)
+//                } catch (e: WriterException) {
+//                    Log.v(TAG, "error")
+//                }
+//            } else {
+//                edt_value.error = "Required"
+//            }
+//
+//        }
 
     }
 }

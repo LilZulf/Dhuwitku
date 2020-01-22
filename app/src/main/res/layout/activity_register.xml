@@ -8,6 +8,7 @@
     android:background="@drawable/bgauth"
     tools:context=".Register">
 
+    <include layout="@layout/rv_loading"/>
     <TextView
         android:id="@+id/tv_sign_up"
         android:layout_width="match_parent"

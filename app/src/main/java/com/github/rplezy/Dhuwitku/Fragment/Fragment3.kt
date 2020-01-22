@@ -44,8 +44,8 @@ class Fragment3 : Fragment() {
         val view: View = inflater.inflate(R.layout.fragment3, container, false)
 
         view.btn_kirim.setOnClickListener {
-            val intent = Intent(context, QrScanner::class.java)
-            startActivity(intent)
+            val daf = Intent(context, QrScanner::class.java)
+            startActivity(daf)
         }
         view.btn_minta.setOnClickListener {
             showqr()
@@ -88,7 +88,7 @@ class Fragment3 : Fragment() {
 
     }
     private fun getData(){
-        Toast.makeText(activity!!,"Fetching data", Toast.LENGTH_SHORT).show()
+
         var qrdat : String? = data!!.getString("ID_USER")
         var getAPI = Service.get().getById(
             qrdat.toString()
@@ -101,7 +101,7 @@ class Fragment3 : Fragment() {
 
             override fun onResponse(call: Call<UserModel>, response: Response<UserModel>) {
                 if(response.body()!!.message == "Succes Fetching data"){
-                    tv_saldo.text = response.body()!!.data!!.saldo
+                    tv_saldo.text = response.body()!!.data!!.saldo!!
                 }
                 else{
                     Toast.makeText(activity!!,"Error Fetching", Toast.LENGTH_SHORT).show()

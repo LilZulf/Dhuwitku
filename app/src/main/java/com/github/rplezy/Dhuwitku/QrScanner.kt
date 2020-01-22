@@ -1,5 +1,6 @@
 package com.github.rplezy.Dhuwitku
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AlertDialog
@@ -42,9 +43,11 @@ class QrScanner : AppCompatActivity(), ZXingScannerView.ResultHandler {
         builder.setTitle("Scan Result")
         builder.setMessage(rawResult.text)
         val alert1 = builder.create()
-        alert1.show()
-
-        mScannerView!!.resumeCameraPreview(this)
+        //alert1.show()
+        val i = Intent(this@QrScanner,GiftActivity::class.java)
+        i.putExtra("Tujuan", rawResult.text)
+        startActivity(i)
+        //mScannerView!!.resumeCameraPreview(this)
 
         // If you would like to resume scanning, call this method below:
         //mScannerView.resumeCameraPreview(this);

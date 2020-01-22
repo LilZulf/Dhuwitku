@@ -24,4 +24,17 @@ interface Endpoint {
     fun getById(
         @Field("idUser") name: String
     ): Call<UserModel>
+    @POST("saldo/topup")
+    @FormUrlEncoded
+    fun doTopUp(
+        @Field ("idUser") id_user : String,
+        @Field("nominal") nominal : String
+    ):Call<UserModel>
+    @POST("saldo/gift")
+    @FormUrlEncoded
+    fun doGift(
+        @Field ("idUser") id_user : String,
+        @Field("nominal") nominal : String,
+        @Field("idTujuan") id_tujuan : String
+    ):Call<UserModel>
 }
