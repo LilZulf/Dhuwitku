@@ -1,5 +1,6 @@
 package com.github.rplezy.Dhuwitku.Config
 
+import com.github.rplezy.Dhuwitku.Model.Transaksi
 import com.github.rplezy.Dhuwitku.Model.UserModel
 import retrofit2.Call
 import retrofit2.http.Field
@@ -37,4 +38,9 @@ interface Endpoint {
         @Field("nominal") nominal : String,
         @Field("idTujuan") id_tujuan : String
     ):Call<UserModel>
+    @POST("transaksi/semua")
+    @FormUrlEncoded
+    fun getTransaksi(
+        @Field( "idTransaksi") id_transaksi : String
+    ):Call<Transaksi>
 }

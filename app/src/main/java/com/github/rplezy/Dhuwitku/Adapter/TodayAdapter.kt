@@ -1,47 +1,30 @@
 package com.github.rplezy.Dhuwitku.Adapter
 
 import android.content.Context
-import android.graphics.Color
-import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.github.rplezy.Dhuwitku.Model.DataItem
-import com.github.rplezy.Dhuwitku.Model.Today
 import com.github.rplezy.Dhuwitku.Model.Transaksi
 import com.github.rplezy.Dhuwitku.R
+import kotlinx.android.synthetic.main.rv_today.view.*
 
-class TodayAdapter (val context : Context,
-                    val listToday : ArrayList<DataItem>)
-    : RecyclerView.Adapter<TodayAdapter.ViewHolder>(){
+class TodayAdapter(
+    private val context: Context,
+    private val arrayList: ArrayList<DataItem>?) :
+        RecyclerView.Adapter<TodayAdapter.Holder>(){
 
-    class ViewHolder (v : View) : RecyclerView.ViewHolder(v) {
-        val desc : TextView = v.findViewById(R.id.tv_nama)
-        val value : TextView = v.findViewById(R.id.tv_value_today)
+    class Holder(val view: View) : RecyclerView.ViewHolder(view)
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
+        return Holder(LayoutInflater.from(parent.context).inflate(R.layout.rv_today,parent,false))
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.rv_today, parent, false)
-        return ViewHolder(v)
-    }
+    override fun getItemCount(): Int = arrayList!!.size
 
-    override fun getItemCount(): Int {
-        return listToday.size
-    }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.desc.text = listToday[position].deskripsi
-        holder.value.text = listToday[position].jumlah.toString()
-        if (listToday[position].state == "2"){
-
-        }else{
-            holder.desc.setTextColor(Color.parseColor("#2ECC71"))
-            holder.desc.setTypeface(holder.desc.typeface, Typeface.BOLD)
-
-            holder.value.setTextColor(Color.parseColor("#2ECC71"))
-            holder.value.setTypeface(holder.value.typeface, Typeface.BOLD)
-        }
+    override fun onBindViewHolder(holder: Holder, position: Int) {
+        holder.view.tv_nama.text = arrayList?.get(position)?.deskripsi
+        holder.view.tv_value_today.text = arrayList?.get(position)?.jumlah
     }
 }
