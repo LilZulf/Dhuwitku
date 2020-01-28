@@ -1,5 +1,7 @@
 package com.github.rplezy.Dhuwitku.Config
 
+import com.github.rplezy.Dhuwitku.AddKategori
+import com.github.rplezy.Dhuwitku.Model.Category
 import com.github.rplezy.Dhuwitku.Model.Transaksi
 import com.github.rplezy.Dhuwitku.Model.UserModel
 import retrofit2.Call
@@ -43,4 +45,15 @@ interface Endpoint {
     fun getTransaksi(
         @Field( "idTransaksi") id_transaksi : String
     ):Call<Transaksi>
+    @POST("category/semua")
+    @FormUrlEncoded
+    fun getCategory(
+        @Field( "idUser") id_user : String
+    ):Call<Category>
+    @POST("category/addKategori")
+    @FormUrlEncoded
+    fun addCategory(
+        @Field( "idUser") id_user : String,
+        @Field("namaKategori") namaKategori: String
+    ):Call<Category>
 }

@@ -24,6 +24,8 @@ import kotlinx.android.synthetic.main.activity_qr_generate.*
 import kotlinx.android.synthetic.main.activity_qr_generate.view.*
 import kotlinx.android.synthetic.main.fragment3.*
 import kotlinx.android.synthetic.main.fragment3.view.*
+import kotlinx.android.synthetic.main.rv_loading.*
+import kotlinx.android.synthetic.main.rv_loading.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -58,6 +60,7 @@ class Fragment3 : Fragment() {
             val intent = Intent (context, TopUp::class.java)
             startActivity(intent)
         }
+        view.loading.visibility = View.VISIBLE
         getData()
         return view
     }
@@ -89,6 +92,7 @@ class Fragment3 : Fragment() {
     }
     private fun getData(){
 
+
         var qrdat : String? = data!!.getString("ID_USER")
         var getAPI = Service.get().getById(
             qrdat.toString()
@@ -96,14 +100,17 @@ class Fragment3 : Fragment() {
 
         getAPI.enqueue(object : Callback<UserModel> {
             override fun onFailure(call: Call<UserModel>, t: Throwable) {
+                //view!!.loading.visibility = View.GONE
                 Toast.makeText(activity!!,t.message, Toast.LENGTH_LONG).show()
             }
 
             override fun onResponse(call: Call<UserModel>, response: Response<UserModel>) {
                 if(response.body()!!.message == "Succes Fetching data"){
+                   view!!.loading.visibility = View.GONE
                     tv_saldo.text = response.body()!!.data!!.saldo!!
                 }
                 else{
+                    view!!.loading.visibility = View.GONE
                     Toast.makeText(activity!!,"Error Fetching", Toast.LENGTH_SHORT).show()
                 }
 

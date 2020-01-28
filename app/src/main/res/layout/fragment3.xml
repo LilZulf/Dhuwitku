@@ -5,7 +5,9 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient"
     tools:context=".Fragment.Fragment3">
-
+    <include layout="@layout/rv_loading"
+        android:id="@+id/loading"
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -43,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
-                android:text="50000"
+                android:text="0"
                 android:textAlignment="center"
                 android:textColor="#ffffff"
                 android:textSize="80dp" />
