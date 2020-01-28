@@ -5,6 +5,10 @@
         android:id="@+id/about"
         android:title="About"
         app:showAsAction="never"/>
+    <item
+        android:id="@+id/category"
+        android:title="Category"
+        app:showAsAction="never"/>
 
     <item
         android:id="@+id/logout"

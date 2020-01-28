@@ -26,15 +26,15 @@ class DetailRiwayat : AppCompatActivity() {
         val llm = LinearLayoutManager(this)
         llm.orientation = RecyclerView.VERTICAL
         rv_detail_riwayat.layoutManager = llm
-        val adapter = TodayAdapter(this, todaylist)
-        rv_detail_riwayat.adapter = adapter
+        //val adapter = TodayAdapter(this, todaylist)
+        //rv_detail_riwayat.adapter = adapter
 
     }
 
-    private val todaylist = arrayListOf(
-        Today("makan","15.000,00","pengeluaran"),
-        Today("gaji","1.000.000,00","pemasukan"),
-        Today("minum","30.000,00","pengeluaran")
-    )
+//    private val todaylist = arrayListOf(
+//        Today("makan","15.000,00","pengeluaran"),
+//        Today("gaji","1.000.000,00","pemasukan"),
+//        Today("minum","30.000,00","pengeluaran")
+//    )
 
 }
