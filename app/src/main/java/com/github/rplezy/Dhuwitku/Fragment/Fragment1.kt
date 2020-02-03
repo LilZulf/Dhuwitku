@@ -152,7 +152,7 @@ class Fragment1 : Fragment() {
             override fun onResponse(call: Call<Transaksi>, response: Response<Transaksi>) {
                 if(response.body()!!.message == "behasil ambil data"){
                    // tv_nama.text = response.body()!!.deskripsi!!
-                    showData(response.body()!!.data)
+                    showData(response.body()?.data)
                 }
                 else{
                     Toast.makeText(activity!!,"Error Fetching", Toast.LENGTH_SHORT).show()
@@ -163,7 +163,7 @@ class Fragment1 : Fragment() {
     }
     private fun showData(cars : ArrayList<DataItem>?) {
        view!!.rv_main_today.apply {
-           layoutManager = LinearLayoutManager (activity)
+           layoutManager = LinearLayoutManager (activity!!)
            adapter = TodayAdapter(activity!!,cars)
        }
     }

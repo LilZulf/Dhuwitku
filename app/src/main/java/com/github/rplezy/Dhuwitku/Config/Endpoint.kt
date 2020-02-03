@@ -1,6 +1,6 @@
 package com.github.rplezy.Dhuwitku.Config
 
-import com.github.rplezy.Dhuwitku.Model.AddTransaksi
+//import com.github.rplezy.Dhuwitku.Model.AddTransaksi
 import com.github.rplezy.Dhuwitku.Model.Category
 import com.github.rplezy.Dhuwitku.Model.Transaksi
 import com.github.rplezy.Dhuwitku.Model.UserModel
@@ -56,13 +56,13 @@ interface Endpoint {
         @Field( "idUser") id_user : String,
         @Field("namaKategori") namaKategori: String
     ):Call<Category>
-    @POST("transaksi/addlog")
-    @FormUrlEncoded
-    fun addTransaksi(
-        @Field("idTransaksi") id_transaksi: String,
-        @Field("idCategory") id_category: String,
-        @Field( "deskripsi") desc: String,
-        @Field( "jumlah") jumlah_transaksi: String,
-        @Field( "state") state: String
-    ):Call<AddTransaksi>
+//    @POST("transaksi/addlog")
+//    @FormUrlEncoded
+//    fun addTransaksi(
+//        @Field("idTransaksi") id_transaksi: String,
+//        @Field("idCategory") id_category: String,
+//        @Field( "deskripsi") desc: String,
+//        @Field( "jumlah") jumlah_transaksi: String,
+//        @Field( "state") state: String
+//    ):Call<AddTransaksi>
 }
