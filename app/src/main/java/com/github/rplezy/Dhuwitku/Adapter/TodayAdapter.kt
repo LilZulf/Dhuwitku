@@ -1,6 +1,7 @@
 package com.github.rplezy.Dhuwitku.Adapter
 
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,7 +27,11 @@ class TodayAdapter(
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.view.tv_nama.text = arrayList?.get(position)?.deskripsi
         holder.view.tv_value_today.text = arrayList?.get(position)?.jumlah
-
+        if(arrayList?.get(position)?.state.equals("2")){
+            holder.view.tv_nama.setTextColor(Color.parseColor("#29B65F"))
+            holder.view.tv_value_today.setTextColor(Color.parseColor("#29B65F"))
+            holder.view.tv_rp_today.setTextColor(Color.parseColor("#29B65F"))
+        }
         if(positiion == position){
             holder.view.rl_hapus.visibility = View.VISIBLE
         } else {

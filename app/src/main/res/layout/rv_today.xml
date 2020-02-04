@@ -8,7 +8,7 @@
         android:layout_height="match_parent"
         android:background="#4A000000"
         android:elevation="1dp"
-        android:visibility="visible"
+        android:visibility="gone"
         android:id="@+id/rl_hapus"
         >
         <ImageView
@@ -18,12 +18,12 @@
             android:layout_centerInParent="true"
             android:padding="@dimen/_3sdp"/>
     </RelativeLayout>
-    <ImageView
-        android:id="@+id/iv_today"
-        android:layout_width="@dimen/_25sdp"
-        android:layout_height="match_parent"
-        android:src="@drawable/lunch"
-        android:padding="@dimen/_3sdp"/>
+<!--    <ImageView-->
+<!--        android:id="@+id/iv_today"-->
+<!--        android:layout_width="@dimen/_25sdp"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:src="@drawable/lunch"-->
+<!--        android:padding="@dimen/_3sdp"/>-->
 
     <TextView
         android:id="@+id/tv_nama"
@@ -33,7 +33,6 @@
         android:textSize="@dimen/_13sdp"
         android:gravity="center"
         android:textColor="@color/black"
-        android:layout_toRightOf="@id/iv_today"
         android:layout_marginLeft="10dp"/>
 
     <RelativeLayout
