@@ -8,6 +8,8 @@ import android.graphics.Point
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidmads.library.qrgenearator.QRGContents
 import androidmads.library.qrgenearator.QRGEncoder
@@ -26,6 +28,7 @@ import kotlinx.android.synthetic.main.fragment3.*
 import kotlinx.android.synthetic.main.fragment3.view.*
 import kotlinx.android.synthetic.main.rv_loading.*
 import kotlinx.android.synthetic.main.rv_loading.view.*
+import org.w3c.dom.Text
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -38,6 +41,8 @@ class Fragment3 : Fragment() {
     private val TAG: String = QrGenerate::class.java.getName()
     private var data : SharedPreferences? = null
     private var cache : Int? = null
+    private var loader: LinearLayout? = null
+    private var saldo : TextView?= null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -61,8 +66,11 @@ class Fragment3 : Fragment() {
             val intent = Intent (context, TopUp::class.java)
             startActivity(intent)
         }
-        view.loading.visibility = View.VISIBLE
-        getData()
+
+        //getData()
+        saldo = view.findViewById(R.id.tv_saldo)
+        loader = view.findViewById(R.id.loading)
+        loader!!.visibility = View.VISIBLE
         if(cache == 1){
             getData()
         }
@@ -112,11 +120,11 @@ class Fragment3 : Fragment() {
             override fun onResponse(call: Call<UserModel>, response: Response<UserModel>) {
                 if(response.body()!!.message == "Succes Fetching data"){
                     cache = 1
-                   view!!.loading.visibility = View.GONE
-                    tv_saldo.text = response.body()!!.data!!.saldo!!
+                    loader!!.visibility = View.GONE
+                    saldo!!.text = response.body()!!.data!!.saldo!!
                 }
                 else{
-                    view!!.loading.visibility = View.GONE
+                    loader!!.visibility = View.GONE
                     Toast.makeText(activity!!,"Error Fetching", Toast.LENGTH_SHORT).show()
                 }
 

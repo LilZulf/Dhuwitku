@@ -1,20 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragment.Fragment1">
-    <include layout="@layout/rv_loading"
+
+    <LinearLayout
         android:id="@+id/loading"
-        />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#4A000000"
+        android:elevation="1dp"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:id="@+id/progressBar_cyclic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:minWidth="50dp"
+            android:minHeight="50dp" />
+    </LinearLayout>
+    <!--    <include layout="@layout/rv_loading"-->
+    <!--        android:id="@+id/loading"-->
+    <!--        />-->
     <RelativeLayout
+        android:id="@+id/rv_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="20dp"
-        android:padding="10dp"
-        android:id="@+id/rv_main"
-        android:background="@drawable/border_radius">
+        android:background="@drawable/border_radius"
+        android:padding="10dp">
 
         <LinearLayout
             android:id="@+id/DateNow"
@@ -58,7 +76,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_150sdp"
             android:layout_below="@id/DateNow"
-            android:layout_margin="@dimen/_7sdp"/>
+            android:layout_margin="@dimen/_7sdp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -77,39 +95,44 @@
                     android:id="@+id/tv_main_pengeluaran"
                     android:layout_width="@dimen/_120sdp"
                     android:layout_height="wrap_content"
-                    android:text="Pengeluaran"
                     android:fontFamily="@font/poppins_bold"
+                    android:text="Pengeluaran"
                     android:textSize="18dp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="5dp"
-                    android:text=":"
+                    android:layout_toRightOf="@id/tv_main_pengeluaran"
                     android:fontFamily="@font/poppins_bold"
-                    android:textSize="18dp"
-                    android:layout_toRightOf="@id/tv_main_pengeluaran"/>
+                    android:text=":"
+                    android:textSize="18dp" />
+
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="end"
-                    android:layout_alignParentRight="true">
+                    android:layout_alignParentRight="true"
+                    android:gravity="end">
+
                     <TextView
                         android:id="@+id/tv_rp_main"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Rp. "
                         android:fontFamily="@font/poppins_bold"
-                        android:textSize="18dp"/>
+                        android:text="Rp. "
+                        android:textSize="18dp" />
+
                     <TextView
                         android:id="@+id/UangKeluar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/tv_rp_main"
                         android:fontFamily="@font/poppins_medium"
                         android:text="0"
-                        android:textSize="18dp"
-                        android:layout_toRightOf="@id/tv_rp_main"/>
+                        android:textSize="18dp" />
                 </RelativeLayout>
             </RelativeLayout>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -119,41 +142,45 @@
                     android:id="@+id/tv_main_pemasukan"
                     android:layout_width="@dimen/_120sdp"
                     android:layout_height="wrap_content"
-                    android:text="Pengeluaran"
                     android:fontFamily="@font/poppins_bold"
-                    android:textSize="18dp"
-                    android:textColor="@color/Theme"/>
+                    android:text="Pengeluaran"
+                    android:textColor="@color/Theme"
+                    android:textSize="18dp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="5dp"
-                    android:text=":"
+                    android:layout_toRightOf="@id/tv_main_pemasukan"
                     android:fontFamily="@font/poppins_bold"
+                    android:text=":"
                     android:textColor="@color/Theme"
-                    android:textSize="18dp"
-                    android:layout_toRightOf="@id/tv_main_pemasukan"/>
+                    android:textSize="18dp" />
+
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="end"
-                    android:layout_alignParentRight="true">
+                    android:layout_alignParentRight="true"
+                    android:gravity="end">
+
                     <TextView
                         android:id="@+id/tv_rp_main2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Rp. "
                         android:fontFamily="@font/poppins_bold"
+                        android:text="Rp. "
                         android:textColor="@color/Theme"
-                        android:textSize="18dp"/>
+                        android:textSize="18dp" />
+
                     <TextView
                         android:id="@+id/UangMasuk"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/tv_rp_main2"
                         android:fontFamily="@font/poppins_medium"
                         android:text="0"
                         android:textColor="@color/Theme"
-                        android:textSize="18dp"
-                        android:layout_toRightOf="@id/tv_rp_main2"/>
+                        android:textSize="18dp" />
                 </RelativeLayout>
             </RelativeLayout>
 
@@ -166,34 +193,35 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:layout_gravity="bottom|end"
-            app:elevation="0dp"
             android:backgroundTint="@color/Theme"
-            android:src="@drawable/add" />
+            android:src="@drawable/add"
+            app:elevation="0dp" />
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_alignParentRight="true"
-            app:elevation="0dp"
             android:layout_above="@id/fab1"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="bottom|end"
             android:layout_marginBottom="10dp"
             android:backgroundTint="@color/Theme"
+            android:src="@drawable/ic_unfold_less24dp"
             android:visibility="gone"
-            android:src="@drawable/ic_unfold_less24dp"/>
+            app:elevation="0dp" />
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_alignParentRight="true"
-            app:elevation="0dp"
             android:layout_above="@id/fab2"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="bottom|end"
             android:layout_marginBottom="10dp"
             android:backgroundTint="@color/Theme"
             android:src="@drawable/ic_list_kategori24dp"
             android:visibility="gone"
-            />
+            app:elevation="0dp" />
 
 
     </RelativeLayout>

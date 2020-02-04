@@ -7,6 +7,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.RelativeLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -35,6 +38,10 @@ import kotlin.collections.ArrayList
 class Fragment1 : Fragment() {
     private var data: SharedPreferences? = null
     lateinit var rv_main_today: RecyclerView
+    private var loader: LinearLayout? = null
+    private var ukl : TextView? = null
+    private var um : TextView? = null
+    private var idTrans : String? = null
     //var arrayList = ArrayList<Log>()
 
 
@@ -50,6 +57,9 @@ class Fragment1 : Fragment() {
         val currentDate = sdf.format(Date())
 
         val view: View = inflater.inflate(R.layout.fragment_, container, false)
+        loader = view.findViewById(R.id.loading)
+        ukl = view.findViewById(R.id.UangKeluar)
+        um = view.findViewById(R.id.UangMasuk)
         data = SharedPreferences(activity!!)
         view.fab1.setOnClickListener {
             view.fab2.show()
@@ -62,12 +72,13 @@ class Fragment1 : Fragment() {
         view.date.setText(currentDate)
         view.fab2.setOnClickListener {
             val daf = Intent(context, Add::class.java)
+            daf.putExtra("idTransaksi", idTrans )
             startActivity(daf)
         }
-        view.fab3.setOnClickListener {
-            val daf = Intent(context, AddKategori::class.java)
-            startActivity(daf)
-        }
+//        view.fab3.setOnClickListener {
+//            val daf = Intent(context, AddKategori::class.java)
+//            startActivity(daf)
+//        }
 
         rv_main_today = view.findViewById(R.id.rv_main_today)
 //        val llm = LinearLayoutManager(this.requireContext())
@@ -92,7 +103,7 @@ class Fragment1 : Fragment() {
 ////                adapterToday.notifyDataSetChanged()
 ////            }
 //        }
-        view.loading.visibility = View.VISIBLE
+        loader!!.visibility = View.VISIBLE
         getTransaksi()
         return view
     }
@@ -155,18 +166,18 @@ class Fragment1 : Fragment() {
         )
         TransaksiModel.enqueue(object : retrofit2.Callback<Transaksi> {
             override fun onFailure(call: Call<Transaksi>, t: Throwable) {
-                view!!.loading.visibility = View.GONE
+                loader!!.visibility = View.GONE
                 Toast.makeText(activity!!, t.message, Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(call: Call<Transaksi>, response: Response<Transaksi>) {
                 if (response.body()!!.message == "behasil ambil data") {
                     // tv_nama.text = response.body()!!.deskripsi!!
-                    view!!.loading.visibility = View.GONE
+                    loader!!.visibility = View.GONE
                     showData(response.body()?.data)
 
                 } else {
-                    view!!.loading.visibility = View.GONE
+                    loader!!.visibility = View.GONE
                     Toast.makeText(activity!!, "Error Fetching", Toast.LENGTH_SHORT).show()
                 }
             }
@@ -192,8 +203,9 @@ class Fragment1 : Fragment() {
             override fun onResponse(call: Call<MainTransaksi>, response: Response<MainTransaksi>) {
                 if (response.body()!!.message == "behasil ambil data") {
                     // tv_nama.text = response.body()!!.deskripsi!!
-                    UangKeluar.text = response.body()!!.data.pengeluaran
-                    UangMasuk.text = response.body()!!.data.pemasukan
+                    ukl!!.text = response.body()!!.data.pengeluaran
+                    um!!.text = response.body()!!.data.pemasukan
+                    idTrans = response.body()!!.data.id_transaksi.toString()
                     getLog(Integer.parseInt(response.body()!!.data.id_transaksi.toString()))
                     // showData(response.body())
                 } else {
@@ -205,7 +217,7 @@ class Fragment1 : Fragment() {
     }
 
     private fun showData(cars: ArrayList<DataItem>?) {
-        view!!.rv_main_today.apply {
+        rv_main_today.apply {
             layoutManager = LinearLayoutManager(activity!!)
             adapter = TodayAdapter(activity!!, cars)
         }

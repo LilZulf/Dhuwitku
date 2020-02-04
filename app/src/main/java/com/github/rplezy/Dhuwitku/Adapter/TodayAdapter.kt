@@ -14,7 +14,7 @@ class TodayAdapter(
     private val context: Context,
     private val arrayList: ArrayList<DataItem>?) :
         RecyclerView.Adapter<TodayAdapter.Holder>(){
-
+    private var positiion = -1
     class Holder(val view: View) : RecyclerView.ViewHolder(view)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
@@ -26,5 +26,21 @@ class TodayAdapter(
     override fun onBindViewHolder(holder: Holder, position: Int) {
         holder.view.tv_nama.text = arrayList?.get(position)?.deskripsi
         holder.view.tv_value_today.text = arrayList?.get(position)?.jumlah
+
+        if(positiion == position){
+            holder.view.rl_hapus.visibility = View.VISIBLE
+        } else {
+            holder.view.rl_hapus.visibility = View.GONE
+        }
+
+        holder.itemView.setOnClickListener {
+            positiion = position
+            notifyDataSetChanged()
+        }
+        holder.view.rl_hapus.setOnClickListener {
+            holder.view.rl_hapus.visibility = View.GONE
+            positiion = -1
+            notifyDataSetChanged()
+        }
     }
 }
