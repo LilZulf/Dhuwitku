@@ -209,13 +209,36 @@ class Fragment1 : Fragment() {
                     getLog(Integer.parseInt(response.body()!!.data.id_transaksi.toString()))
                     // showData(response.body())
                 } else {
-                    Toast.makeText(activity!!, "Data Kadaluarsa", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(activity!!, "Data Kadaluarsa Tunggu Sebentar", Toast.LENGTH_SHORT).show()
+                    addTransaksi()
                 }
             }
 
         })
     }
+    private fun addTransaksi(){
+        var qrdat: String? = data!!.getString("ID_USER")
+        val TransaksiModel = Service.get().addMainTransaksi(
+            qrdat.toString()
+        )
+        TransaksiModel.enqueue(object : retrofit2.Callback<Transaksi> {
+            override fun onFailure(call: Call<Transaksi>, t: Throwable) {
+                Toast.makeText(activity!!, t.message, Toast.LENGTH_SHORT).show()
+            }
 
+            override fun onResponse(call: Call<Transaksi>, response: Response<Transaksi>) {
+                if (response.body()!!.message == "behasil tambah data") {
+                    // tv_nama.text = response.body()!!.deskripsi!!
+                    getTransaksi()
+                    // showData(response.body())
+                } else {
+                    Toast.makeText(activity!!, "Error", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+        })
+
+    }
     private fun showData(cars: ArrayList<DataItem>?) {
         rv_main_today.apply {
             layoutManager = LinearLayoutManager(activity!!)

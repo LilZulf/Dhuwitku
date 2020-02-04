@@ -8,10 +8,15 @@
         android:layout_height="match_parent"
         android:background="#4A000000"
         android:elevation="1dp"
-        android:visibility="gone"
+        android:visibility="visible"
         android:id="@+id/rl_hapus"
         >
-
+        <ImageView
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="match_parent"
+            android:src="@drawable/ic_delete_black_24dp"
+            android:layout_centerInParent="true"
+            android:padding="@dimen/_3sdp"/>
     </RelativeLayout>
     <ImageView
         android:id="@+id/iv_today"

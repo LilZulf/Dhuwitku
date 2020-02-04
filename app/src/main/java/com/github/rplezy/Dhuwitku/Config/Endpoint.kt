@@ -69,4 +69,10 @@ interface Endpoint {
         @Field( "idUser") id_user : String,
         @Field("tanggal") tanggal : String
     ):Call<MainTransaksi>
+    @POST("transaksi/addtransaksi")
+    @FormUrlEncoded
+    fun addMainTransaksi(
+        @Field( "idUser") id_user : String
+    ):Call<Transaksi>
+
 }

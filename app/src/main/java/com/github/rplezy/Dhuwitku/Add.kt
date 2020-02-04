@@ -91,11 +91,12 @@ class Add : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     private fun create() {
 
         //val selectkat = kategori_spinner.selectedItem.toString()
+        var strIdtrans: String = intent.getStringExtra("idTransaksi")
         val selecttipe = tipe_spinner.selectedItem.toString()
 //        Toast.makeText(this@Add, selected, Toast.LENGTH_SHORT).show()
         val transid:String? = data!!.getString("ID_USER")
         var addTransaksi = Service.get().tambahTransaksi(
-            transid.toString(),
+            strIdtrans,
             selectKat,
             AddJudul.text.toString(),
             AddJumlah.text.toString(),
