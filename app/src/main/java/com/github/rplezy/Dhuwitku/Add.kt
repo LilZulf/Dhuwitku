@@ -48,7 +48,20 @@ class Add : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         spinnertipe!!.setAdapter(tip)
 
         ButtonAdd.setOnClickListener {
-            create()
+            val judul = AddJudul.text.toString().trim()
+            val jml = AddJumlah.text.toString().trim()
+            if(judul.isEmpty()){
+                AddJudul.error = "Harap Isi"
+                AddJudul.requestFocus()
+            }
+            else if(jml.isEmpty()){
+                AddJumlah.error = "Harap Isi"
+                AddJumlah.requestFocus()
+            }
+            else{
+                create()
+            }
+
         }
     }
 
@@ -72,10 +85,10 @@ class Add : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             }
 
             override fun onResponse(call: Call<AddTransaksi>, response: Response<AddTransaksi>) {
-                if(response.body()!!.message == "berhasil tambah data"){
-                    val intent = Intent(applicationContext, MainActivity::class.java)
-                    startActivity(intent)
+                if(response.body()!!.message == "behasil tambah data"){
+                    val intent = Intent(this@Add, MainActivity::class.java)
                     finish()
+                    startActivity(intent)
                 }
                 else{
                     Toast.makeText(applicationContext,response.body()!!.message, Toast.LENGTH_SHORT).show()

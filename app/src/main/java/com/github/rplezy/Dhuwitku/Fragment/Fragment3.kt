@@ -37,6 +37,7 @@ import retrofit2.Response
 class Fragment3 : Fragment() {
     private val TAG: String = QrGenerate::class.java.getName()
     private var data : SharedPreferences? = null
+    private var cache : Int? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -62,6 +63,10 @@ class Fragment3 : Fragment() {
         }
         view.loading.visibility = View.VISIBLE
         getData()
+        if(cache == 1){
+            getData()
+        }
+
         return view
     }
 
@@ -106,6 +111,7 @@ class Fragment3 : Fragment() {
 
             override fun onResponse(call: Call<UserModel>, response: Response<UserModel>) {
                 if(response.body()!!.message == "Succes Fetching data"){
+                    cache = 1
                    view!!.loading.visibility = View.GONE
                     tv_saldo.text = response.body()!!.data!!.saldo!!
                 }
@@ -117,6 +123,11 @@ class Fragment3 : Fragment() {
             }
 
         })
+    }
+
+    override fun onResume() {
+        getData()
+        super.onResume()
     }
 }
 
