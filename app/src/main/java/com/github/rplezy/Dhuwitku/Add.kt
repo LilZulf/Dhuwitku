@@ -13,6 +13,7 @@ import com.github.rplezy.Dhuwitku.Model.AddTransaksi
 import com.github.rplezy.Dhuwitku.Model.Category
 import com.github.rplezy.Dhuwitku.Model.SharedPreferences
 import kotlinx.android.synthetic.main.activity_add.*
+import kotlinx.android.synthetic.main.header2.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -39,7 +40,9 @@ class Add : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         var strIdtrans: String = intent.getStringExtra("idTransaksi")
         spinnertipe = this.tipe_spinner
         spinnertipe!!.setOnItemSelectedListener(this)
-
+        iv_back.setOnClickListener {
+            finish()
+        }
         // Create an ArrayAdapter using a simple spinner layout and languages array
 //        val kat = ArrayAdapter(this, android.R.layout.simple_spinner_item, kategori)
         val tip = ArrayAdapter(this , android.R.layout.simple_spinner_item, tipe)

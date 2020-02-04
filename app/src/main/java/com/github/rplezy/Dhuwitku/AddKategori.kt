@@ -10,6 +10,7 @@ import com.github.rplezy.Dhuwitku.Model.Category
 import com.github.rplezy.Dhuwitku.Model.ItemCategory
 import com.github.rplezy.Dhuwitku.Model.SharedPreferences
 import kotlinx.android.synthetic.main.activity_add_kategori.*
+import kotlinx.android.synthetic.main.header2.*
 import retrofit2.Call
 import retrofit2.Response
 
@@ -28,6 +29,9 @@ class AddKategori : AppCompatActivity() {
             }else{
                 addKategori()
             }
+        }
+        iv_back.setOnClickListener {
+            finish()
         }
     }
     private fun addKategori() {

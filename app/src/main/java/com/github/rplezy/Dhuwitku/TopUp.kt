@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_top_up.*
+import kotlinx.android.synthetic.main.header2.*
 
 class TopUp : AppCompatActivity() {
 
@@ -11,6 +12,9 @@ class TopUp : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_top_up)
 
+        iv_back.setOnClickListener {
+            finish()
+        }
         btn_5k.setOnClickListener {
             val intent = Intent(this,ConfirmTopup::class.java);
             intent.putExtra("Nominal", "5000")

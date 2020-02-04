@@ -8,6 +8,7 @@ import com.github.rplezy.Dhuwitku.Config.Service
 import com.github.rplezy.Dhuwitku.Model.SharedPreferences
 import com.github.rplezy.Dhuwitku.Model.UserModel
 import kotlinx.android.synthetic.main.activity_confirm_topup.*
+import kotlinx.android.synthetic.main.header2.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -22,6 +23,9 @@ class ConfirmTopup : AppCompatActivity() {
         tv_nominal.text = "Rp."+strNominal
         btn_done.setOnClickListener {
             getData()
+        }
+        iv_back.setOnClickListener {
+            finish()
         }
     }
     private fun getData(){

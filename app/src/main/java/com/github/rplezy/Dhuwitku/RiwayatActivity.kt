@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.rplezy.Dhuwitku.Adapter.RiwayatAdapter
 import com.github.rplezy.Dhuwitku.Model.Riwayat
 import kotlinx.android.synthetic.main.activity_riwayat.*
+import kotlinx.android.synthetic.main.header2.*
 
 class RiwayatActivity : AppCompatActivity(), RiwayatAdapter.OnItemClick{
 
@@ -25,6 +26,9 @@ class RiwayatActivity : AppCompatActivity(), RiwayatAdapter.OnItemClick{
         rv_riwayat.layoutManager = linearLayoutManager
         val adapter = RiwayatAdapter(this, riwayat, this)
         rv_riwayat.adapter = adapter
+        iv_back.setOnClickListener {
+            finish()
+        }
 
     }
 

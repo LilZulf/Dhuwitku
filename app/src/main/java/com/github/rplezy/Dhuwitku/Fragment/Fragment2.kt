@@ -29,6 +29,7 @@ class Fragment2 : Fragment() {
             val daf = Intent(context, RiwayatActivity::class.java)
             startActivity(daf)
         }
+
         return view
     }
 
