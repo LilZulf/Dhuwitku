@@ -14,11 +14,14 @@ import com.github.rplezy.Dhuwitku.Adapter.TodayAdapter
 import com.github.rplezy.Dhuwitku.Add
 import com.github.rplezy.Dhuwitku.Config.Service
 import com.github.rplezy.Dhuwitku.Model.DataItem
+import com.github.rplezy.Dhuwitku.Model.MainTransaksi
+import com.github.rplezy.Dhuwitku.Model.SharedPreferences
 import com.github.rplezy.Dhuwitku.Model.Transaksi
 
 import com.github.rplezy.Dhuwitku.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.activity_add_kategori.*
+import kotlinx.android.synthetic.main.fragment_.*
 import kotlinx.android.synthetic.main.fragment_.view.*
 import retrofit2.Call
 import retrofit2.Response
@@ -30,19 +33,24 @@ import kotlin.collections.ArrayList
  * A simple [Fragment] subclass.
  */
 class Fragment1 : Fragment() {
-
-    lateinit var rv_main_today : RecyclerView
+    private var data: SharedPreferences? = null
+    lateinit var rv_main_today: RecyclerView
     //var arrayList = ArrayList<Log>()
 
 
-    var _fab2 : FloatingActionButton? = null
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    var _fab2: FloatingActionButton? = null
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
         //setDateNow
         val sdf = SimpleDateFormat("yyyy-MM-dd")
         val currentDate = sdf.format(Date())
 
         val view: View = inflater.inflate(R.layout.fragment_, container, false)
+        data = SharedPreferences(activity!!)
         view.fab1.setOnClickListener {
             view.fab2.show()
             view.fab3.show()
@@ -62,7 +70,6 @@ class Fragment1 : Fragment() {
         }
 
         rv_main_today = view.findViewById(R.id.rv_main_today)
-
 //        val llm = LinearLayoutManager(this.requireContext())
 //        llm.orientation = RecyclerView.VERTICAL
 //        rv_main_today.layoutManager = llm
@@ -85,7 +92,8 @@ class Fragment1 : Fragment() {
 ////                adapterToday.notifyDataSetChanged()
 ////            }
 //        }
-            getTransaksi()
+        view.loading.visibility = View.VISIBLE
+        getTransaksi()
         return view
     }
 
@@ -139,32 +147,67 @@ class Fragment1 : Fragment() {
 //
 //    }
 
-    private fun getTransaksi() {
-        var gg:Int = 1
+    private fun getLog(idTransaksi: Int?) {
+        var qrdat: String? = data!!.getString("ID_USER")
+        var gg: Int = 1
         val TransaksiModel = Service.get().getTransaksi(
-            gg.toString()
+            idTransaksi.toString()
         )
         TransaksiModel.enqueue(object : retrofit2.Callback<Transaksi> {
             override fun onFailure(call: Call<Transaksi>, t: Throwable) {
-                Toast.makeText(activity!!,t.message, Toast.LENGTH_SHORT).show()
+                view!!.loading.visibility = View.GONE
+                Toast.makeText(activity!!, t.message, Toast.LENGTH_SHORT).show()
             }
 
             override fun onResponse(call: Call<Transaksi>, response: Response<Transaksi>) {
-                if(response.body()!!.message == "behasil ambil data"){
-                   // tv_nama.text = response.body()!!.deskripsi!!
+                if (response.body()!!.message == "behasil ambil data") {
+                    // tv_nama.text = response.body()!!.deskripsi!!
+                    view!!.loading.visibility = View.GONE
                     showData(response.body()?.data)
-                }
-                else{
-                    Toast.makeText(activity!!,"Error Fetching", Toast.LENGTH_SHORT).show()
+
+                } else {
+                    view!!.loading.visibility = View.GONE
+                    Toast.makeText(activity!!, "Error Fetching", Toast.LENGTH_SHORT).show()
                 }
             }
 
         })
     }
-    private fun showData(cars : ArrayList<DataItem>?) {
-       view!!.rv_main_today.apply {
-           layoutManager = LinearLayoutManager (activity!!)
-           adapter = TodayAdapter(activity!!,cars)
-       }
+
+    private fun getTransaksi() {
+
+        var qrdat: String? = data!!.getString("ID_USER")
+        val sdf = SimpleDateFormat("yyyy-MM-dd")
+        val currentDate = sdf.format(Date())
+
+        val TransaksiModel = Service.get().getMainTransaksi(
+            qrdat.toString(),
+            currentDate.toString()
+        )
+        TransaksiModel.enqueue(object : retrofit2.Callback<MainTransaksi> {
+            override fun onFailure(call: Call<MainTransaksi>, t: Throwable) {
+                Toast.makeText(activity!!, t.message, Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onResponse(call: Call<MainTransaksi>, response: Response<MainTransaksi>) {
+                if (response.body()!!.message == "behasil ambil data") {
+                    // tv_nama.text = response.body()!!.deskripsi!!
+                    UangKeluar.text = response.body()!!.data.pengeluaran
+                    UangMasuk.text = response.body()!!.data.pemasukan
+                    getLog(Integer.parseInt(response.body()!!.data.id_transaksi.toString()))
+                    // showData(response.body())
+                } else {
+                    Toast.makeText(activity!!, "Data Kadaluarsa", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+        })
+    }
+
+    private fun showData(cars: ArrayList<DataItem>?) {
+        view!!.rv_main_today.apply {
+            layoutManager = LinearLayoutManager(activity!!)
+            adapter = TodayAdapter(activity!!, cars)
+        }
     }
 }

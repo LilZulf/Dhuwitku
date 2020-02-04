@@ -1,10 +1,7 @@
 package com.github.rplezy.Dhuwitku.Config
 
 //import com.github.rplezy.Dhuwitku.Model.AddTransaksi
-import com.github.rplezy.Dhuwitku.Model.AddTransaksi
-import com.github.rplezy.Dhuwitku.Model.Category
-import com.github.rplezy.Dhuwitku.Model.Transaksi
-import com.github.rplezy.Dhuwitku.Model.UserModel
+import com.github.rplezy.Dhuwitku.Model.*
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -66,4 +63,10 @@ interface Endpoint {
         @Field( "jumlah") jumlah_transaksi: String,
         @Field( "state") state: String
     ):Call<AddTransaksi>
+    @POST("transaksi/gettransaksi")
+    @FormUrlEncoded
+    fun getMainTransaksi(
+        @Field( "idUser") id_user : String,
+        @Field("tanggal") tanggal : String
+    ):Call<MainTransaksi>
 }
