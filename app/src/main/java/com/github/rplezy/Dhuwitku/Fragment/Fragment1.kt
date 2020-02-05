@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,15 +15,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.rplezy.Dhuwitku.Adapter.TodayAdapter
 import com.github.rplezy.Dhuwitku.Add
 import com.github.rplezy.Dhuwitku.Config.Service
-import com.github.rplezy.Dhuwitku.Model.DataItem
+import com.github.rplezy.Dhuwitku.Model.ItemLogTransaksi
 import com.github.rplezy.Dhuwitku.Model.MainTransaksi
 import com.github.rplezy.Dhuwitku.Model.SharedPreferences
 import com.github.rplezy.Dhuwitku.Model.Transaksi
 
 import com.github.rplezy.Dhuwitku.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import kotlinx.android.synthetic.main.activity_add_kategori.*
-import kotlinx.android.synthetic.main.fragment_.*
 import kotlinx.android.synthetic.main.fragment_.view.*
 import retrofit2.Call
 import retrofit2.Response
@@ -75,88 +72,12 @@ class Fragment1 : Fragment() {
             daf.putExtra("idTransaksi", idTrans )
             startActivity(daf)
         }
-//        view.fab3.setOnClickListener {
-//            val daf = Intent(context, AddKategori::class.java)
-//            startActivity(daf)
-//        }
 
         rv_main_today = view.findViewById(R.id.rv_main_today)
-//        val llm = LinearLayoutManager(this.requireContext())
-//        llm.orientation = RecyclerView.VERTICAL
-//        rv_main_today.layoutManager = llm
-//        adapterToday = TodayAdapter(this.requireContext(),)
-//        rv_main_today.adapter = adapterToday
-
-//        val itemTouchHelperCallback :ItemTouchHelper.SimpleCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT or ItemTouchHelper.LEFT){
-//            override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
-//                return false
-//            }
-//
-////            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-////                val returntoday: ArrayList<Transaksi> = getTransaksi()
-////                val todaydata = adapterToday.listToday.get(viewHolder.adapterPosition)
-////
-////                for (today in returntoday) {
-////                    returntoday.remove(today)
-////                    break
-////                }
-////                adapterToday.notifyDataSetChanged()
-////            }
-//        }
         loader!!.visibility = View.VISIBLE
         getTransaksi()
         return view
     }
-
-//    private fun loadAll(){
-//        //loading rv
-//        val loading = ProgressDialog(this)
-//        loading.setMessage("Memuat data...")
-//        loading.show()
-//        AndroidNetworking.get(EndPoint)
-//            .setPriority(RenderScript.Priority.MEDIUM)
-//            .build()
-//            .getAsJSONObject(object : JSONObjectRequestListener{
-//
-//                override fun onResponse(response: JSONObject?) {
-//                    arrayList.clear()
-//
-//                    val jsonArray = response?.optJSONArray("result")
-//
-//                    if(jsonArray?.length() == 0){
-//                        loading.dismiss()
-//                        Toast.makeText(applicationContext,"Student data is empty, Add the data first",Toast.LENGTH_SHORT).show()
-//                    }
-//
-//                    for(i in 0 until jsonArray?.length()!!){
-//
-//                        val jsonObject = jsonArray?.optJSONObject(i)
-//                        arrayList.add(Students(jsonObject.getString("nim"),
-//                            jsonObject.getString("name"),
-//                            jsonObject.getString("address"),
-//                            jsonObject.getString("gender")))
-//
-//                        if(jsonArray?.length() - 1 == i){
-//
-//                            loading.dismiss()
-//                            val adapter = RVAAdapterStudent(applicationContext,arrayList)
-//                            adapter.notifyDataSetChanged()
-//                            mRecyclerView.adapter = adapter
-//
-//                        }
-//
-//                    }
-//
-//                }
-//
-//                override fun onError(anError: ANError?) {
-//                    loading.dismiss()
-//                    Log.d("ONERROR",anError?.errorDetail?.toString())
-//                    Toast.makeText(applicationContext,"Connection Failure",Toast.LENGTH_SHORT).show()
-//                }
-//            })
-//
-//    }
 
     private fun getLog(idTransaksi: Int?) {
         var qrdat: String? = data!!.getString("ID_USER")
@@ -239,7 +160,7 @@ class Fragment1 : Fragment() {
         })
 
     }
-    private fun showData(cars: ArrayList<DataItem>?) {
+    private fun showData(cars: ArrayList<ItemLogTransaksi>?) {
         rv_main_today.apply {
             layoutManager = LinearLayoutManager(activity!!)
             adapter = TodayAdapter(activity!!, cars)

@@ -5,9 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.github.rplezy.Dhuwitku.Model.DataItem
 import com.github.rplezy.Dhuwitku.Model.ItemCategory
-import com.github.rplezy.Dhuwitku.Model.Transaksi
 import com.github.rplezy.Dhuwitku.R
 import kotlinx.android.synthetic.main.rv_cateogory.view.*
 

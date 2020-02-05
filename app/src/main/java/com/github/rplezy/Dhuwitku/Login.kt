@@ -121,6 +121,7 @@ class Login : AppCompatActivity() {
                     val intent = Intent(applicationContext,com.github.rplezy.Dhuwitku.MainActivity::class.java)
                     Toast.makeText(applicationContext,"Login Berhasil :)", Toast.LENGTH_SHORT).show()
                     data!!.setString("ID_USER",response.body()!!.data!!.id_user.toString())
+                    data!!.setString("USERNAME",response.body()!!.data!!.username.toString())
                     data!!.session("LOGIN",true)
                     startActivity(intent)
                     finish()

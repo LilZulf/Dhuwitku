@@ -6,14 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.github.rplezy.Dhuwitku.Model.DataItem
-import com.github.rplezy.Dhuwitku.Model.Transaksi
+import com.github.rplezy.Dhuwitku.Model.ItemLogTransaksi
 import com.github.rplezy.Dhuwitku.R
 import kotlinx.android.synthetic.main.rv_today.view.*
 
 class TodayAdapter(
     private val context: Context,
-    private val arrayList: ArrayList<DataItem>?) :
+    private val arrayList: ArrayList<ItemLogTransaksi>?) :
         RecyclerView.Adapter<TodayAdapter.Holder>(){
     private var positiion = -1
     class Holder(val view: View) : RecyclerView.ViewHolder(view)

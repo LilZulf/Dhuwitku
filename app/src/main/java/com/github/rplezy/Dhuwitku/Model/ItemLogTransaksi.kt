@@ -1,6 +1,6 @@
 package com.github.rplezy.Dhuwitku.Model
 
-data class DataItem(
+data class ItemLogTransaksi(
 	val jumlah: String? = null,
 	val id_category: String? = null,
 	val id_log: String? = null,

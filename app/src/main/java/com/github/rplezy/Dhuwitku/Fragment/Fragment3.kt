@@ -14,7 +14,11 @@ import android.widget.Toast
 import androidmads.library.qrgenearator.QRGContents
 import androidmads.library.qrgenearator.QRGEncoder
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.github.rplezy.Dhuwitku.Adapter.HistoryAdapter
 import com.github.rplezy.Dhuwitku.Config.Service
+import com.github.rplezy.Dhuwitku.Model.ItemHistory
+import com.github.rplezy.Dhuwitku.Model.History
 import com.github.rplezy.Dhuwitku.Model.SharedPreferences
 import com.github.rplezy.Dhuwitku.Model.UserModel
 import com.github.rplezy.Dhuwitku.QrGenerate
@@ -26,9 +30,6 @@ import kotlinx.android.synthetic.main.activity_qr_generate.*
 import kotlinx.android.synthetic.main.activity_qr_generate.view.*
 import kotlinx.android.synthetic.main.fragment3.*
 import kotlinx.android.synthetic.main.fragment3.view.*
-import kotlinx.android.synthetic.main.rv_loading.*
-import kotlinx.android.synthetic.main.rv_loading.view.*
-import org.w3c.dom.Text
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -39,16 +40,17 @@ import retrofit2.Response
  */
 class Fragment3 : Fragment() {
     private val TAG: String = QrGenerate::class.java.getName()
-    private var data : SharedPreferences? = null
+    private lateinit var data : SharedPreferences
     private var cache : Int? = null
     private var loader: LinearLayout? = null
     private var saldo : TextView?= null
+    private var name : TextView? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         //Inflate the dialog with custom view
-        data = SharedPreferences(activity!!)
+        data = SharedPreferences(context!!)
         val view: View = inflater.inflate(R.layout.fragment3, container, false)
 
         view.btn_kirim.setOnClickListener {
@@ -68,12 +70,15 @@ class Fragment3 : Fragment() {
         }
 
         //getData()
+        name = view.findViewById(R.id.tv_username)
         saldo = view.findViewById(R.id.tv_saldo)
         loader = view.findViewById(R.id.loading)
+        //name!!.text = data.getString("USERNAME")
         loader!!.visibility = View.VISIBLE
         if(cache == 1){
             getData()
         }
+        getHistory()
 
         return view
     }
@@ -81,7 +86,7 @@ class Fragment3 : Fragment() {
     fun showqr() {
 
 
-        var qrdat : String? = data!!.getString("ID_USER")
+        var qrdat : String? = data.getString("ID_USER")
         val manager = activity!!.getSystemService(Context.WINDOW_SERVICE) as WindowManager
         val display = manager.defaultDisplay
         val point = Point()
@@ -122,6 +127,8 @@ class Fragment3 : Fragment() {
                     cache = 1
                     loader!!.visibility = View.GONE
                     saldo!!.text = response.body()!!.data!!.saldo!!
+                    name!!.text = response.body()!!.data!!.username!!
+
                 }
                 else{
                     loader!!.visibility = View.GONE
@@ -136,6 +143,41 @@ class Fragment3 : Fragment() {
     override fun onResume() {
         getData()
         super.onResume()
+    }
+
+    private fun getHistory() {
+        var qrdat: String? = data!!.getString("ID_USER")
+        //var gg: Int = 1
+        var tipe = "topup"
+        val HistoryModel = Service.get().getHistory(
+            qrdat.toString(),
+            tipe
+        )
+        HistoryModel.enqueue(object : retrofit2.Callback<History> {
+            override fun onFailure(call: Call<History>, t: Throwable) {
+                loader!!.visibility = View.GONE
+                Toast.makeText(activity!!, t.message, Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onResponse(call: Call<History>, response: Response<History>) {
+                if (response.body()!!.status == true) {
+                    // tv_nama.text = response.body()!!.deskripsi!!
+                    loader!!.visibility = View.GONE
+                    showData(response.body()?.data)
+
+                } else {
+                    loader!!.visibility = View.GONE
+                    Toast.makeText(activity!!, "Error Fetching", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+        })
+    }
+    private fun showData(data: ArrayList<ItemHistory>?) {
+        rv_history.apply {
+            layoutManager = LinearLayoutManager(activity!!)
+            adapter = HistoryAdapter(activity!!, data)
+        }
     }
 }
 
