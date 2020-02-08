@@ -74,11 +74,23 @@ interface Endpoint {
     fun addMainTransaksi(
         @Field( "idUser") id_user : String
     ):Call<Transaksi>
+    @POST("transaksi/laporan")
+    @FormUrlEncoded
+    fun getLaporan(
+        @Field("idUser") id_user: String,
+        @Field("tanggal") tanggal: String,
+        @Field("kind") kind : String
+    ):Call<Basic>
     @POST("saldo/riwayat")
     @FormUrlEncoded
     fun getHistory(
         @Field("idUser") id_user : String,
         @Field("kind") type : String
     ):Call<History>
+    @POST("transaksi/deleteLog")
+    @FormUrlEncoded
+    fun deleteLog(
+        @Field("idLog")id_log: String
+    ):Call<Basic>
 
 }
