@@ -20,7 +20,7 @@ import retrofit2.Response
 
 class Add : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
-    var tipe = arrayOf(1,2)
+    var tipe = arrayOf("Pengeluaran","Pemasukan")
     var kategori = arrayOf(1,2,3,4,5)
 
     var spinnerkat: Spinner? = null
@@ -95,8 +95,9 @@ class Add : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
         //val selectkat = kategori_spinner.selectedItem.toString()
         var strIdtrans: String = intent.getStringExtra("idTransaksi")
-        val selecttipe = tipe_spinner.selectedItem.toString()
-//        Toast.makeText(this@Add, selected, Toast.LENGTH_SHORT).show()
+        val selecttipe = (tipe_spinner.selectedItemPosition + 1).toString()
+
+//        Toast.makeText(this@Add, selecttipe, Toast.LENGTH_SHORT).show()
         val transid:String? = data!!.getString("ID_USER")
         var addTransaksi = Service.get().tambahTransaksi(
             strIdtrans,
@@ -130,7 +131,7 @@ class Add : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        Toast.makeText(this,"Item", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this, (tipe_spinner.selectedItemPosition + 1).toString(), Toast.LENGTH_SHORT).show()
     }
     private fun getKategori() {
         var gg:Int = 1
@@ -165,8 +166,8 @@ class Add : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                             for (i in 0 until response.body()!!.data!!.size){
                                 if (response.body()!!.data!![i].namaKategori == selectedName){
                                     selectKat = response.body()!!.data!![i].id_category!!
-                                    Toast.makeText(applicationContext, "Kamu memilih kategori $selectedName dengan id: ${response.body()!!.data!![i].id_category}", Toast.LENGTH_SHORT)
-                                        .show()
+//                                    Toast.makeText(applicationContext, "Kamu memilih kategori $selectedName dengan id: ${response.body()!!.data!![i].id_category}", Toast.LENGTH_SHORT)
+//                                        .show()
                                 }
                             }
                             //                requestDetailDosen(selectedName);
