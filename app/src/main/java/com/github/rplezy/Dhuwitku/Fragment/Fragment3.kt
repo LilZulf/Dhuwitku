@@ -15,6 +15,7 @@ import androidmads.library.qrgenearator.QRGContents
 import androidmads.library.qrgenearator.QRGEncoder
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.github.rplezy.Dhuwitku.Adapter.HistoryAdapter
 import com.github.rplezy.Dhuwitku.Config.Service
 import com.github.rplezy.Dhuwitku.Model.ItemHistory
@@ -25,6 +26,7 @@ import com.github.rplezy.Dhuwitku.QrGenerate
 import com.github.rplezy.Dhuwitku.QrScanner
 import com.github.rplezy.Dhuwitku.R
 import com.github.rplezy.Dhuwitku.TopUp
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.zxing.WriterException
 import kotlinx.android.synthetic.main.activity_qr_generate.*
 import kotlinx.android.synthetic.main.activity_qr_generate.view.*
@@ -45,6 +47,10 @@ class Fragment3 : Fragment() {
     private var loader: LinearLayout? = null
     private var saldo : TextView?= null
     private var name : TextView? = null
+    private var rv_saldo : RecyclerView? = null
+    private var rv_gift : RecyclerView? = null
+    private var drag : LinearLayout? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -61,11 +67,11 @@ class Fragment3 : Fragment() {
             showqr()
             view.qr.visibility = View.VISIBLE
         }
-        view.qr.setOnClickListener{
+        view.qr.setOnClickListener {
             view.qr.visibility = View.GONE
         }
-        view.btn_topup.setOnClickListener{
-            val intent = Intent (context, TopUp::class.java)
+        view.btn_topup.setOnClickListener {
+            val intent = Intent(context, TopUp::class.java)
             startActivity(intent)
         }
 
@@ -73,12 +79,17 @@ class Fragment3 : Fragment() {
         name = view.findViewById(R.id.tv_username)
         saldo = view.findViewById(R.id.tv_saldo)
         loader = view.findViewById(R.id.loading)
+        rv_saldo = view.findViewById(R.id.rv_history_saldo)
+        rv_gift = view.findViewById(R.id.rv_history_gift)
+        drag = view.findViewById(R.id.dragView)
         //name!!.text = data.getString("USERNAME")
         loader!!.visibility = View.VISIBLE
         if(cache == 1){
             getData()
         }
         getHistory()
+        getHistoryGift()
+
 
         return view
     }
@@ -173,11 +184,48 @@ class Fragment3 : Fragment() {
 
         })
     }
+
     private fun showData(data: ArrayList<ItemHistory>?) {
-        rv_history.apply {
+        rv_saldo!!.apply {
             layoutManager = LinearLayoutManager(activity!!)
             adapter = HistoryAdapter(activity!!, data)
         }
     }
+
+    private fun getHistoryGift() {
+        var qrdat: String? = data!!.getString("ID_USER")
+        //var gg: Int = 1
+        var tipe = "gift"
+        val HistoryModel = Service.get().getHistory(
+            qrdat.toString(),
+            tipe
+        )
+        HistoryModel.enqueue(object : retrofit2.Callback<History> {
+            override fun onFailure(call: Call<History>, t: Throwable) {
+                loader!!.visibility = View.GONE
+                Toast.makeText(activity!!, t.message, Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onResponse(call: Call<History>, response: Response<History>) {
+                if (response.body()!!.status == true) {
+                    // tv_nama.text = response.body()!!.deskripsi!!
+                    loader!!.visibility = View.GONE
+                    showDataGift(response.body()?.data)
+
+                } else {
+                    loader!!.visibility = View.GONE
+                    Toast.makeText(activity!!, "Error Fetching", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+        })
+    }
+    private fun showDataGift(data: ArrayList<ItemHistory>?) {
+        rv_gift!!.apply {
+            layoutManager = LinearLayoutManager(activity!!)
+            adapter = HistoryAdapter(activity!!, data)
+        }
+    }
+
 }
 
