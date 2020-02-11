@@ -1,52 +1,59 @@
 package com.github.rplezy.Dhuwitku
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.github.rplezy.Dhuwitku.Adapter.RiwayatAdapter
+import com.github.rplezy.Dhuwitku.Config.Service
+import com.github.rplezy.Dhuwitku.Model.ItemRiwayat
 import com.github.rplezy.Dhuwitku.Model.Riwayat
+import com.github.rplezy.Dhuwitku.Model.SharedPreferences
 import kotlinx.android.synthetic.main.activity_riwayat.*
 import kotlinx.android.synthetic.main.header2.*
+import retrofit2.Call
+import retrofit2.Response
 
-class RiwayatActivity : AppCompatActivity(), RiwayatAdapter.OnItemClick{
+class RiwayatActivity : AppCompatActivity(){
 
-    lateinit var linearLayoutManager: LinearLayoutManager
-    private var PRIVATE_MODE = 0
-    private var PREF_NAME = "PREFS"
+    private var data: SharedPreferences? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_riwayat)
-
-        linearLayoutManager = LinearLayoutManager(this)
-        linearLayoutManager.orientation = RecyclerView.VERTICAL
-        rv_riwayat.layoutManager = linearLayoutManager
-        val adapter = RiwayatAdapter(this, riwayat, this)
-        rv_riwayat.adapter = adapter
+        data = SharedPreferences(this)
+        getTransaksi()
         iv_back.setOnClickListener {
             finish()
         }
-
     }
+    private fun getTransaksi() {
 
-    private val riwayat = arrayListOf(
-        Riwayat("20.000,00","15.000,00"),
-        Riwayat("45.000,00","24.000,00"),
-        Riwayat("12.000,00","30.000,00"),
-        Riwayat("60.000,00","34.500,00")
-    )
+        var qrdat: String? = data!!.getString("ID_USER")
 
-    override fun OnItemClickListener(value_in: String, value_out: String) {
-        val intent = Intent(this, DetailRiwayat::class.java)
-        intent.putExtra("valuein",value_in)
-        intent.putExtra("valueout",value_out)
-        startActivity(intent)
+        val TransaksiModel = Service.get().riwayat(
+            qrdat.toString()
+        )
+        TransaksiModel.enqueue(object : retrofit2.Callback<Riwayat> {
+            override fun onFailure(call: Call<Riwayat>, t: Throwable) {
+                Toast.makeText(this@RiwayatActivity, t.message, Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onResponse(call: Call<Riwayat>, response: Response<Riwayat>) {
+                if (response.body()!!.message == "behasil ambil data") {
+                        showData(response.body()!!.data)
+                } else {
+                    Toast.makeText(this@RiwayatActivity, "Belum Melakukan transaksi", Toast.LENGTH_SHORT).show()
+
+                }
+            }
+
+        })
     }
-
-    override fun onClick(p0: View?) {
-
+    private fun showData(cars: ArrayList<ItemRiwayat>?) {
+        rv_riwayat.apply {
+            layoutManager = LinearLayoutManager(this@RiwayatActivity)
+            adapter = RiwayatAdapter(this@RiwayatActivity, cars)
+        }
     }
 }

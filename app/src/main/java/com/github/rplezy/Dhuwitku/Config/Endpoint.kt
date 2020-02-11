@@ -92,5 +92,10 @@ interface Endpoint {
     fun deleteLog(
         @Field("idLog")id_log: String
     ):Call<Basic>
+    @POST("transaksi/riwayat")
+    @FormUrlEncoded
+    fun riwayat(
+        @Field("idUser") id_user: String
+    ):Call<Riwayat>
 
 }

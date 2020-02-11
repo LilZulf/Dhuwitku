@@ -1,3 +1,8 @@
 package com.github.rplezy.Dhuwitku.Model
 
-data class Riwayat (var value_in : String, var value_out : String)
+data class Riwayat (
+    val code: Int? = null,
+    val data: ArrayList<ItemRiwayat>? = null,
+    val message: String? = null,
+    val status: Boolean? = null
+)

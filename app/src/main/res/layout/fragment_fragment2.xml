@@ -194,7 +194,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Laporan per bulan"
+            android:text="Laporan per tanggal"
             android:textSize="@dimen/_13sdp"
             android:textColor="@color/black"
             android:textStyle="bold"
@@ -211,41 +211,13 @@
 
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/rl_laporan_minggu"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@drawable/frame_border"
-        android:layout_below="@id/rl_laporan_bulan"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="15dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="Laporan per minggu"
-            android:textSize="@dimen/_13sdp"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:gravity="center_vertical"
-            android:layout_marginLeft="20dp"/>
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/next"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="20dp"/>
-
-    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/rl_riwayat_transaksi"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@drawable/frame_border"
-        android:layout_below="@id/rl_laporan_minggu"
+        android:layout_below="@id/rl_laporan_bulan"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="15dp">
