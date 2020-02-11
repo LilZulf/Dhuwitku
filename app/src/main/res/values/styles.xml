@@ -14,5 +14,10 @@
         <item name="android:windowActionBarOverlay">true</item>
     </style>
 
+    <style name="dialog_style" parent="android:style/Theme.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
 
 </resources>

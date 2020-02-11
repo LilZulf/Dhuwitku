@@ -67,13 +67,12 @@ class Fragment2 : Fragment() {
 
         laporanTanggal = view.findViewById(R.id.rl_laporan_bulan)
         laporanTanggal.setOnClickListener {
-//            val date = DatePickerDialog(this.requireContext(), this, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH) )
-//            date.datePicker.maxDate = Calendar.getInstance().timeInMillis
-//            date.show()
 
-            val dialog = Dialog(this.requireActivity())
+            val dialog = Dialog(this.requireActivity(),R.style.dialog_style)
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
             dialog.setContentView(R.layout.dialog_tanggal)
+            dialog.setCancelable(true)
+            dialog.window?.setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
 
             val min = dialog.findViewById<Button>(R.id.button_min_date)
             val max = dialog.findViewById<Button>(R.id.button_max_date)
