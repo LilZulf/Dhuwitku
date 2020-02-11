@@ -3,12 +3,24 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
+    android:layout_marginVertical="@dimen/_5sdp"
     android:orientation="horizontal">
 
     <LinearLayout
+        android:id="@+id/duit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tipe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Menerima"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_toLeftOf="@+id/duit"
+            android:textColor="@color/white"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -36,5 +48,11 @@
         android:text="2 hari yang lalu"
         android:textColor="@color/white"
         android:layout_alignParentRight="true" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_below="@+id/tv_time"
+        android:background="@drawable/line_white" />
 
 </RelativeLayout>
