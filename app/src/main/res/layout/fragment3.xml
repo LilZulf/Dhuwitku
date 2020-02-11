@@ -207,11 +207,13 @@ sothree:umanoOverlay="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+
         android:background="@color/Theme">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="History Saldo"
+        android:text="History TopUp"
+        android:layout_marginTop="@dimen/_15sdp"
         android:fontFamily="@font/poppins_bold"
         android:textColor="@color/white"
         android:gravity="center"/>
@@ -219,7 +221,7 @@ sothree:umanoOverlay="true"
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_history_saldo"
         android:layout_width="match_parent"
-        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:layout_marginHorizontal="@dimen/_40sdp"
         android:layout_height="@dimen/_150sdp"
         android:layout_margin="@dimen/_7sdp"/>
 
@@ -234,8 +236,8 @@ sothree:umanoOverlay="true"
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_history_gift"
         android:layout_width="match_parent"
-        android:layout_marginHorizontal="@dimen/_20sdp"
         android:layout_height="@dimen/_150sdp"
+        android:layout_marginHorizontal="@dimen/_40sdp"
         android:layout_margin="@dimen/_7sdp"/>
 
     </LinearLayout>

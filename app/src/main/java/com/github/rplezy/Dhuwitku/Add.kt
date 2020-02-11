@@ -131,7 +131,7 @@ class Add : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        //Toast.makeText(this, (tipe_spinner.selectedItemPosition + 1).toString(), Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, (tipe_spinner.selectedItemPosition + 1).toString(), Toast.LENGTH_SHORT).show()
     }
     private fun getKategori() {
         var gg:Int = 1
