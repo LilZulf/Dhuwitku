@@ -12,6 +12,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.multidex.MultiDex
 import com.github.rplezy.Dhuwitku.Config.Service
 import com.github.rplezy.Dhuwitku.Model.SharedPreferences
 import com.github.rplezy.Dhuwitku.Model.UserModel
@@ -33,10 +34,13 @@ class Login : AppCompatActivity() {
         setContentView(R.layout.activity_login)
         data = SharedPreferences(applicationContext!!)
         firebaseAuth = FirebaseAuth.getInstance()
-        if(data!!.getSession("LOGIN") == true){
+
+        MultiDex.install(this)
+
+        if(data!!.getSession("LOGIN")){
             val intent = Intent(applicationContext, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
-            finish()
 
         }else{
             if (ContextCompat.checkSelfPermission(this,
