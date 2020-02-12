@@ -6,6 +6,7 @@ import android.app.Dialog
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.view.*
 import android.widget.*
 import androidx.fragment.app.Fragment
@@ -31,7 +32,8 @@ import java.util.*
  * A simple [Fragment] subclass.
  */
 class Fragment2 : Fragment() {
-    var tanggal : TextView? = null
+    var tanggalMin : TextView? = null
+    var tanggalMax : TextView? = null
     var pengeluaran : TextView? = null
     var pemasukan : TextView? = null
     var selisih : Int? = null
@@ -39,6 +41,10 @@ class Fragment2 : Fragment() {
     var pemasukanVal = 0
     var pemasukann = 0
     var pengeluaranVal = 0
+    var buttonIsClick = false
+
+    private var PRIVATE_MODE = 0
+    private val PREF_NAME = "buttonClick"
 
     lateinit var laporanTanggal : RelativeLayout
     var cMin = Calendar.getInstance()
@@ -46,16 +52,19 @@ class Fragment2 : Fragment() {
     var stringDate = ""
 
     private var data : SharedPreferences? = null
+
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         data = SharedPreferences(activity!!)
+
         val view: View = inflater.inflate(R.layout.fragment_fragment2, container, false)
         val sdf = SimpleDateFormat("yyyy/MM/dd")
         val sdf2 = SimpleDateFormat("yyyy/MM")
         val currentDate = sdf.format(Date())
         val currentMonth = sdf2.format(Date())
-        tanggal = view.findViewById(R.id.tv_tanggal)
+        tanggalMin = view.findViewById(R.id.tv_tanggal_min)
+        tanggalMax = view.findViewById(R.id.tv_tanggal_max)
         view.rl_riwayat_transaksi.setOnClickListener {
             val daf = Intent(context, RiwayatActivity::class.java)
             startActivity(daf)
@@ -63,7 +72,6 @@ class Fragment2 : Fragment() {
         tv_selisih = view.findViewById(R.id.tv_value_selisih)
         pengeluaran = view.findViewById(R.id.tv_value_pengeluaran)
         pemasukan = view.findViewById(R.id.tv_value_pemasukan)
-        tanggal!!.text = currentMonth.toString()+"/01 - "+currentDate.toString()
 
         laporanTanggal = view.findViewById(R.id.rl_laporan_bulan)
         laporanTanggal.setOnClickListener {
@@ -114,10 +122,13 @@ class Fragment2 : Fragment() {
             }
 
             ok.setOnClickListener {
-                Toast.makeText(this.requireContext(), "Min date is : ${sdf.format(cMin.time)}\nMax date is : ${sdf.format(cMax.time)}", Toast.LENGTH_LONG).show()
+                dialog.dismiss()
+                tanggalMin!!.text = sdf.format(cMin.time)
+                tanggalMax!!.text = sdf.format(cMax.time)
             }
 
         }
+
 
         getData()
         return view

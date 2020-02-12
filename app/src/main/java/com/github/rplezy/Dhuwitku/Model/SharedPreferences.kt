@@ -29,6 +29,14 @@ class SharedPreferences(var context: Context) {
         editor.remove(KEY_NAME)
         editor.commit()
     }
+    fun getButtonClick(KEY:String,isButton:Boolean):Boolean?{
+        return preferences.getBoolean(KEY,isButton)
+    }
+    fun setButtonClick(KEY:String,isButton:Boolean):Boolean?{
+        editor.putBoolean(KEY,isButton)
+        editor.commit()
+        return preferences.getBoolean(KEY,isButton)
+    }
     fun clearSharedPreference() {
 
         //sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
