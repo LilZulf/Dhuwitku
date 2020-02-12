@@ -3,8 +3,10 @@ package com.github.rplezy.Dhuwitku
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import com.github.rplezy.Dhuwitku.Config.Service
+import com.github.rplezy.Dhuwitku.Model.AddTransaksi
 import com.github.rplezy.Dhuwitku.Model.SharedPreferences
 import com.github.rplezy.Dhuwitku.Model.UserModel
 import retrofit2.Call
@@ -21,10 +23,21 @@ class GiftActivity : AppCompatActivity() {
         getData()
         ButtonSubmit.setOnClickListener {
             val nominal = usrNominal.text.toString().trim()
+            val judul = usrJudul.text.toString().trim()
+            val pesan = usrPesan.text.toString().trim()
             if (nominal.isEmpty()){
                 usrNominal.error = "Harap isi Nominal"
                 usrNominal.requestFocus()
-            }else{
+            }
+            else if(judul.isEmpty()){
+                usrJudul.error = "Harap isi judul"
+                usrJudul.requestFocus()
+
+            }else if(pesan.isEmpty()){
+                usrPesan.error = "Harap isi Pesan"
+                usrPesan.requestFocus()
+            }
+            else{
                 gift()
             }
 
@@ -59,10 +72,14 @@ class GiftActivity : AppCompatActivity() {
         var strTujuan: String = intent.getStringExtra("Tujuan")
         var id_user : String? = data!!.getString("ID_USER")
         val nominal = usrNominal.text.toString().trim()
+        val title = usrJudul.text.toString().trim()
+        val pesan = usrJudul.text.toString().trim()
         var getAPI = Service.get().doGift(
             id_user.toString(),
             nominal,
-            strTujuan
+            strTujuan,
+            title,
+            pesan
         )
 
         getAPI.enqueue(object : Callback<UserModel> {
@@ -87,4 +104,6 @@ class GiftActivity : AppCompatActivity() {
 
         })
     }
+
+
 }

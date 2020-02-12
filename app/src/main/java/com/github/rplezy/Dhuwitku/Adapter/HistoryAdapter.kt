@@ -36,9 +36,9 @@ class HistoryAdapter(
         holder.view.tv_time.text = arrayList?.get(position)?.date
         holder.view.tipe.text = arrayList?.get(position)?.id_user
         if(arrayList?.get(position)?.id_user != data!!.getString("ID_USER") ){
-            holder.view.tipe.text = "Mengirim"
-        }else{
             holder.view.tipe.text = "Menerima"
+        }else{
+            holder.view.tipe.text = "Mengirim"
         }
 
     }

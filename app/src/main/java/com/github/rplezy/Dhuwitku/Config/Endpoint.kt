@@ -36,7 +36,9 @@ interface Endpoint {
     fun doGift(
         @Field ("idUser") id_user : String,
         @Field("nominal") nominal : String,
-        @Field("idTujuan") id_tujuan : String
+        @Field("idTujuan") id_tujuan : String,
+        @Field("title") title:String,
+        @Field("pesan") pesan : String
     ):Call<UserModel>
     @POST("transaksi/semua")
     @FormUrlEncoded
