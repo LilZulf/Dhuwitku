@@ -32,8 +32,7 @@ import java.util.*
  * A simple [Fragment] subclass.
  */
 class Fragment2 : Fragment() {
-    var tanggalMin : TextView? = null
-    var tanggalMax : TextView? = null
+    var tanggal : TextView? = null
     var pengeluaran : TextView? = null
     var pemasukan : TextView? = null
     var selisih : Int? = null
@@ -42,9 +41,6 @@ class Fragment2 : Fragment() {
     var pemasukann = 0
     var pengeluaranVal = 0
     var buttonIsClick = false
-
-    private var PRIVATE_MODE = 0
-    private val PREF_NAME = "buttonClick"
 
     lateinit var laporanTanggal : RelativeLayout
     var cMin = Calendar.getInstance()
@@ -63,8 +59,9 @@ class Fragment2 : Fragment() {
         val sdf2 = SimpleDateFormat("yyyy/MM")
         val currentDate = sdf.format(Date())
         val currentMonth = sdf2.format(Date())
-        tanggalMin = view.findViewById(R.id.tv_tanggal_min)
-        tanggalMax = view.findViewById(R.id.tv_tanggal_max)
+        tanggal = view.findViewById(R.id.tv_tanggal)
+
+        tanggal!!.text = currentMonth.toString() +"/01 - "+currentDate.toString()
         view.rl_riwayat_transaksi.setOnClickListener {
             val daf = Intent(context, RiwayatActivity::class.java)
             startActivity(daf)
@@ -123,8 +120,7 @@ class Fragment2 : Fragment() {
 
             ok.setOnClickListener {
                 dialog.dismiss()
-                tanggalMin!!.text = sdf.format(cMin.time)
-                tanggalMax!!.text = sdf.format(cMax.time)
+                tanggal!!.text = sdf.format(cMin.time)+" - "+sdf.format(cMax.time)
             }
 
         }
