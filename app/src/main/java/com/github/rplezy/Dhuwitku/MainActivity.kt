@@ -55,9 +55,6 @@ class MainActivity : AppCompatActivity() {
             popupMenu.menuInflater.inflate(R.menu.optionmenu,popupMenu.menu)
             popupMenu.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item ->
                 when(item!!.itemId) {
-                    R.id.about ->{
-                        Toast.makeText(this@MainActivity, "You Clicked : " + item.title, Toast.LENGTH_SHORT).show()
-                    }
                     R.id.category ->{
                         val i = Intent(this@MainActivity,AddKategori::class.java)
                         startActivity(i)

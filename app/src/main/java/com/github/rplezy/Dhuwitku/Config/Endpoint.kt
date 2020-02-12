@@ -83,6 +83,14 @@ interface Endpoint {
         @Field("tanggal") tanggal: String,
         @Field("kind") kind : String
     ):Call<Basic>
+    @POST("transaksi/laporantgl")
+    @FormUrlEncoded
+    fun getLaporanTgl(
+        @Field("idUser") id_user: String,
+        @Field("awal") awal: String,
+        @Field("akhir") akhir :String,
+        @Field("kind") kind : String
+    ):Call<Basic>
     @POST("saldo/riwayat")
     @FormUrlEncoded
     fun getHistory(

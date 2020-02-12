@@ -11,8 +11,10 @@ import android.view.*
 import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
 import androidx.core.view.get
 import com.github.rplezy.Dhuwitku.Config.Service
+import com.github.rplezy.Dhuwitku.MainActivity
 import com.github.rplezy.Dhuwitku.Model.Basic
 import com.github.rplezy.Dhuwitku.Model.SharedPreferences
 import com.github.rplezy.Dhuwitku.Model.UserModel
@@ -38,10 +40,11 @@ class Fragment2 : Fragment() {
     var selisih : Int? = null
     var tv_selisih : TextView?= null
     var pemasukanVal = 0
+    private var loader: LinearLayout? = null
     var pemasukann = 0
     var pengeluaranVal = 0
     var buttonIsClick = false
-
+    var reset : RelativeLayout? = null
     lateinit var laporanTanggal : RelativeLayout
     var cMin = Calendar.getInstance()
     var cMax = Calendar.getInstance()
@@ -60,7 +63,13 @@ class Fragment2 : Fragment() {
         val currentDate = sdf.format(Date())
         val currentMonth = sdf2.format(Date())
         tanggal = view.findViewById(R.id.tv_tanggal)
-
+        loader = view.findViewById(R.id.loading)
+        reset = view.findViewById(R.id.rl_reset)
+        reset!!.visibility = View.GONE
+        reset!!.setOnClickListener {
+            val i = Intent(activity!!, MainActivity::class.java)
+            startActivity(i)
+        }
         tanggal!!.text = currentMonth.toString() +"/01 - "+currentDate.toString()
         view.rl_riwayat_transaksi.setOnClickListener {
             val daf = Intent(context, RiwayatActivity::class.java)
@@ -84,11 +93,13 @@ class Fragment2 : Fragment() {
             val ok = dialog.findViewById<Button>(R.id.button_ok)
 
             max.isEnabled = false
+            ok.isEnabled = false
 
             dialog.show()
 
             min.setOnClickListener {
                 max.isEnabled = true
+                ok.isEnabled = true
                 var thisAYear = cMin.get(Calendar.YEAR)
                 var thisAMonth = cMin.get(Calendar.MONTH)
                 var thisADay = cMin.get(Calendar.DAY_OF_MONTH)
@@ -121,15 +132,55 @@ class Fragment2 : Fragment() {
             ok.setOnClickListener {
                 dialog.dismiss()
                 tanggal!!.text = sdf.format(cMin.time)+" - "+sdf.format(cMax.time)
+                laporanTgl(sdf.format(cMin.time),sdf.format(cMax.time))
             }
 
         }
 
-
+        loader!!.visibility = View.VISIBLE
         getData()
         return view
     }
+    private fun laporanTgl(awal : String,akhir : String){
+        loader!!.visibility = View.VISIBLE
+        var qrdat : String? = data!!.getString("ID_USER")
+        val sdf = SimpleDateFormat("yyyy-MM-dd")
+        val sdf2 = SimpleDateFormat("yyyy-MM")
+        val currentDate = sdf.format(Date())
+        val currentMonth = sdf2.format(Date())
 
+        var getAPI = Service.get().getLaporanTgl(
+            qrdat.toString(),
+            awal,
+            akhir,
+            "pemasukan"
+        )
+
+        getAPI.enqueue(object : Callback<Basic> {
+            override fun onFailure(call: Call<Basic>, t: Throwable) {
+                view!!.loading.visibility = View.GONE
+                Toast.makeText(activity!!,t.message, Toast.LENGTH_LONG).show()
+            }
+
+            override fun onResponse(call: Call<Basic>, response: Response<Basic>) {
+                if(response.body()!!.message == "behasil ambil data"){
+                    pemasukan!!.text = response.body()!!.data
+                    tv_selisih!!.text = response.body()!!.data
+                    pemasukanVal = Integer.parseInt(response.body()!!.data!!)
+                    pemasukann = pemasukanVal
+                    setSelisih2(awal,akhir)
+                    loader!!.visibility = View.GONE
+                }
+                else{
+                    loader!!.visibility = View.GONE
+                    Toast.makeText(activity!!,"Error Fetching", Toast.LENGTH_SHORT).show()
+                }
+
+            }
+
+        })
+
+    }
     private fun convertDateToLong(date : String) : Long {
         val df = SimpleDateFormat("yyyy/MM/dd")
         return df.parse(date).time
@@ -141,33 +192,7 @@ class Fragment2 : Fragment() {
         val sdf2 = SimpleDateFormat("yyyy-MM")
         val currentDate = sdf.format(Date())
         val currentMonth = sdf2.format(Date())
-        var getAPI = Service.get().getLaporan(
-            qrdat.toString(),
-            currentDate,
-            "pengeluaran"
-        )
 
-        getAPI.enqueue(object : Callback<Basic> {
-            override fun onFailure(call: Call<Basic>, t: Throwable) {
-                //view!!.loading.visibility = View.GONE
-                Toast.makeText(activity!!,t.message, Toast.LENGTH_LONG).show()
-            }
-
-            override fun onResponse(call: Call<Basic>, response: Response<Basic>) {
-                if(response.body()!!.message == "behasil ambil data"){
-                    pengeluaran!!.text = response.body()!!.data
-                    tv_selisih!!.text = response.body()!!.data
-                    pengeluaranVal = Integer.parseInt(response.body()!!.data!!)
-
-                }
-                else{
-                    Toast.makeText(activity!!,"Error Fetching", Toast.LENGTH_SHORT).show()
-                }
-
-            }
-
-
-        })
         var getAPI2 = Service.get().getLaporan(
             qrdat.toString(),
             currentDate,
@@ -183,11 +208,10 @@ class Fragment2 : Fragment() {
             override fun onResponse(call: Call<Basic>, response: Response<Basic>) {
                 if(response.body()!!.message == "behasil ambil data"){
                     pemasukan!!.text = response.body()!!.data
-                    var pen : String? = tv_selisih!!.text.toString()
-                    var total : Int? = Integer.parseInt(response.body()!!.data!!) - Integer.parseInt(pen!!)
-                    tv_selisih!!.text = total.toString()
+                    tv_selisih!!.text = response.body()!!.data
                     pemasukanVal = Integer.parseInt(response.body()!!.data!!)
                     pemasukann = pemasukanVal
+                    setSelisih()
                 }
                 else{
 
@@ -197,11 +221,92 @@ class Fragment2 : Fragment() {
             }
 
         })
-
         //Toast.makeText(context, "Pengeluaran  "+ pemasukan!!, Toast.LENGTH_SHORT).show()
 //        val sel = pemasukanVal - pengeluaranVal
 //        tv_selisih!!.text = sel.toString()
 
+    }
+    private fun setSelisih(){
+
+        var qrdat : String? = data!!.getString("ID_USER")
+        val sdf = SimpleDateFormat("yyyy-MM-dd")
+        val sdf2 = SimpleDateFormat("yyyy-MM")
+        val currentDate = sdf.format(Date())
+        val currentMonth = sdf2.format(Date())
+
+        var getAPI = Service.get().getLaporan(
+            qrdat.toString(),
+            currentDate,
+            "pengeluaran"
+        )
+        getAPI.enqueue(object : Callback<Basic> {
+            override fun onFailure(call: Call<Basic>, t: Throwable) {
+                view!!.loading.visibility = View.GONE
+                Toast.makeText(activity!!,t.message, Toast.LENGTH_LONG).show()
+            }
+
+            override fun onResponse(call: Call<Basic>, response: Response<Basic>) {
+                if(response.body()!!.message == "behasil ambil data"){
+                    pengeluaran!!.text = response.body()!!.data
+
+                    // tv_selisih!!.text = response.body()!!.data
+                    var pen : String? = tv_selisih!!.text.toString()
+                    var total : Int? = Integer.parseInt(pen!!) - Integer.parseInt(response.body()!!.data!!)
+                    tv_selisih!!.text = total.toString()
+                    pengeluaranVal = Integer.parseInt(response.body()!!.data!!)
+                    view!!.loading.visibility = View.GONE
+                }
+                else{
+                    view!!.loading.visibility = View.GONE
+                    Toast.makeText(activity!!,"Error Fetching", Toast.LENGTH_SHORT).show()
+                }
+
+            }
+
+
+        })
+    }
+    private fun setSelisih2(awal : String,akhir : String){
+
+        var qrdat : String? = data!!.getString("ID_USER")
+        val sdf = SimpleDateFormat("yyyy-MM-dd")
+        val sdf2 = SimpleDateFormat("yyyy-MM")
+        val currentDate = sdf.format(Date())
+        val currentMonth = sdf2.format(Date())
+
+        var getAPI = Service.get().getLaporanTgl(
+            qrdat.toString(),
+            awal,
+            akhir,
+            "pengeluaran"
+        )
+        getAPI.enqueue(object : Callback<Basic> {
+            override fun onFailure(call: Call<Basic>, t: Throwable) {
+                //view!!.loading.visibility = View.GONE
+                Toast.makeText(activity!!,t.message, Toast.LENGTH_LONG).show()
+            }
+
+            override fun onResponse(call: Call<Basic>, response: Response<Basic>) {
+                if(response.body()!!.message == "behasil ambil data"){
+                    loader!!.visibility = View.GONE
+                    pengeluaran!!.text = response.body()!!.data
+                    // tv_selisih!!.text = response.body()!!.data
+                    var pen : String? = tv_selisih!!.text.toString()
+                    var total : Int? = Integer.parseInt(pen!!) - Integer.parseInt(response.body()!!.data!!)
+                    tv_selisih!!.text = total.toString()
+                    reset!!.visibility = View.VISIBLE
+                    pengeluaranVal = Integer.parseInt(response.body()!!.data!!)
+
+                }
+                else{
+                    loader!!.visibility = View.GONE
+                    Toast.makeText(activity!!,"Error Fetching", Toast.LENGTH_SHORT).show()
+                }
+
+            }
+
+
+        })
     }
 
 

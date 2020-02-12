@@ -5,6 +5,23 @@
     android:layout_height="match_parent"
     tools:context=".Fragment.Fragment2">
 
+    <LinearLayout
+        android:id="@+id/loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#4A000000"
+        android:elevation="1dp"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:id="@+id/progressBar_cyclic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:minWidth="50dp"
+            android:minHeight="50dp" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tv_tanggal"
@@ -211,6 +228,36 @@
             android:layout_marginRight="20dp"/>
 
     </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/rl_reset"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/frame_border"
+        android:layout_below="@id/rl_laporan_bulan"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:visibility="visible"
+        android:layout_marginTop="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Reset Tanggal"
+            android:textSize="@dimen/_13sdp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="20dp"/>
+
+        <ImageView
+
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/next"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"/>
+
+    </RelativeLayout>
 
 
     <RelativeLayout
@@ -218,7 +265,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@drawable/frame_border"
-        android:layout_below="@id/rl_laporan_bulan"
+        android:layout_below="@id/rl_reset"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="15dp">
